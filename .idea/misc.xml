@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/bottom_button.xml" value="0.363" />
+        <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/floating_button.xml" value="0.363" />
+        <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/ic_floatbutton_add.xml" value="0.363" />
+        <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/ic_floating_button.xml" value="0.193" />
+        <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/ic_floatingbutton_add.xml" value="0.363" />
         <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/ic_toolbar_logo.xml" value="0.2635" />
+        <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/drawable/ic_toolbar_search.xml" value="0.2615" />
         <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/font/font_family_en.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/font/font_family_ko.xml" value="0.21510416666666668" />
         <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/layout/activity_main.xml" value="0.264" />
