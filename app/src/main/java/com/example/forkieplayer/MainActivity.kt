@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.forkieplayer.databinding.ActivityMainBinding
@@ -17,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val datas = mutableListOf<PlaylistData>()
         // TODO: 초기 화면에 3개 보이도록 임의로 세팅, 나중에 수정
@@ -32,6 +37,29 @@ class MainActivity : AppCompatActivity() {
         binding.btnBottom.setOnClickListener {
             datas.add(PlaylistData(R.drawable.playlist_sample, "강쥐귀여워강쥐짱짱", 57))
             adapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item?.itemId) {
+            R.id.mypage -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                super.onOptionsItemSelected(item)
+            }
+            R.id.search -> {
+                // TODO: search view 생기면 구현
+                Toast.makeText(this, "search icon click", Toast.LENGTH_SHORT).show()
+                super.onOptionsItemSelected(item)
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 }
