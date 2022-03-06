@@ -14,7 +14,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         app:cardElevation="0dp"
-        app:cardBackgroundColor="@color/forkie_g1"
+        app:cardBackgroundColor="#F6F6F6"
         app:cardCornerRadius="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/font_family_en"
-                android:textColor="@color/forkie_g2"
+                android:textColor="@color/forkie_g3"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

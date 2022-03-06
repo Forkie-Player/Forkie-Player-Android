@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:logo="@drawable/ic_toolbar_logo"
-            app:menu="@menu/toolbar_menu" />
+            app:menu="@menu/toolbar_main" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
