@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/font_family_en"
-                android:text="Profile"
+                android:text="PROFILE"
                 android:textColor="@color/forkie_b1"
                 android:textSize="19sp"
                 android:textStyle="bold" />

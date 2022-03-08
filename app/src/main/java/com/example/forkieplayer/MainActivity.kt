@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
             R.id.search -> {
-                // TODO: search view 생기면 구현
-                Toast.makeText(this, "search icon click", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, SearchActivity::class.java)
+                startActivity(intent)
                 super.onOptionsItemSelected(item)
             }
             else -> {
