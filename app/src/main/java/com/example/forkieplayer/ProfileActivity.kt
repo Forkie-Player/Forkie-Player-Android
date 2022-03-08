@@ -2,15 +2,19 @@ package com.example.forkieplayer
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
 import com.example.forkieplayer.databinding.ActivityProfileBinding
+import java.lang.Exception
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -38,17 +42,10 @@ class ProfileActivity : AppCompatActivity() {
         launcher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()) {
             try {
-                val option = BitmapFactory.Options()
-                option.inSampleSize = 5
-
-                val inputStream = contentResolver.openInputStream(it.data!!.data!!)
-                val bitmap = BitmapFactory.decodeStream(inputStream, null, option)
-                inputStream!!.close()
-                bitmap?.let {
-                    binding.ivProfile.setImageBitmap(bitmap)
-                } ?: let {
-
-                }
+                val uri : Uri = it.data!!.data!!
+                Log.d("minha - Forkie", it.data!!.data!!.toString())
+                Glide.with(this).load(uri)
+                    .into(binding.ivProfile)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
