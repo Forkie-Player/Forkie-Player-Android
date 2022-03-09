@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.forkieplayer.databinding.ActivityMainBinding
 
