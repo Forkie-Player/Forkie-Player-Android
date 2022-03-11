@@ -1,59 +1,37 @@
 package com.example.forkieplayer
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.forkieplayer.databinding.FragmentSearchHitBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchHitFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchHitFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    lateinit var searchActivity: SearchActivity
+    lateinit var adapter: SearchHitAdapter
+
+    // context 획득
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        searchActivity = context as SearchActivity
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val binding = FragmentSearchHitBinding.inflate(inflater, container, false)
+
+        val datas = mutableListOf<SearchHittData>()
+        for (i in 1..5){
+            datas.add(SearchHittData(R.drawable.search_hit_thumnail_sample, "10CM의 킬링보이스를 라이브로! - 폰서트, 매트리스, pet, 봄이좋냐??, TV를껐네, Perfect, 입김, 스토커, 사랑은은하수다방에서, 아메리카노 ㅣ 딩고뮤직", "딩고 뮤직 / dingo music"))
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_hit, container, false)
-    }
+        binding.recyclerHit.layoutManager = LinearLayoutManager(searchActivity)
+        adapter = SearchHitAdapter(datas)
+        binding.recyclerHit.adapter = adapter
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchHitFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchHitFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        return binding.root
     }
 }

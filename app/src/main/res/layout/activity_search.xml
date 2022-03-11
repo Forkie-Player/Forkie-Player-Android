@@ -63,6 +63,7 @@
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:imeOptions="actionSearch"
             android:singleLine="true"
             android:fontFamily="@font/font_family"
             android:hint="영상을 검색해보세요."
