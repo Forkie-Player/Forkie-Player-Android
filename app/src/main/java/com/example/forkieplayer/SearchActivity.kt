@@ -6,15 +6,11 @@ import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.forkieplayer.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySearchBinding
-    lateinit var adapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,21 +22,32 @@ class SearchActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
 
-        val datas = mutableListOf<SearchData>()
+        // fragment 설정
+        val hitFragment = SearchHitFragment()
+        val resultFragment = SearchResultFragment()
 
-        binding.recyclerSearch.layoutManager = LinearLayoutManager(this)
-        adapter = SearchAdapter(datas)
-        binding.recyclerSearch.adapter = adapter
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
 
+        // 액티비티 실행시 hitFragment 실행
+        transaction.add(R.id.fragment_layout, hitFragment)
+        transaction.commit()
+
+        // 엔터키 누르면 frament_search_result 나오도록 설정
         binding.etSearch.setOnKeyListener { view, keyCode, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
-                // data set
-                for (i in 1..10){
-                    datas.add(SearchData(R.drawable.search_thumbnail_sample, "[Playlist] 눈 위에 쓰는 이적의 목소리", R.drawable.search_profile_sample, "my blue valentine"))
-                }
-                adapter.notifyDataSetChanged()
+                val tran = manager.beginTransaction()
+                tran.replace(R.id.fragment_layout, resultFragment)
+                tran.commit()
             }
             true
+        }
+
+        // edit text에서 x 버튼 누르면 frament_search_hit 나오도록 설정
+        binding.textInputLayout.setEndIconOnClickListener {
+            val tran = manager.beginTransaction()
+            tran.replace(R.id.fragment_layout, hitFragment)
+            tran.commit()
         }
     }
 
