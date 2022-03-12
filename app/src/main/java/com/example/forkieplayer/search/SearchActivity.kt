@@ -1,6 +1,5 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.search
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -8,6 +7,7 @@ import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
+import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivitySearchBinding
 
 class SearchActivity : AppCompatActivity() {

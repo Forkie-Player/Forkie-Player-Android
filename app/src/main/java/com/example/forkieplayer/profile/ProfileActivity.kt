@@ -1,7 +1,6 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.profile
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
+import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityProfileBinding
 import java.lang.Exception
 

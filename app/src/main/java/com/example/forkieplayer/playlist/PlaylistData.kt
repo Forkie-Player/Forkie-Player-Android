@@ -1,4 +1,4 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.playlist
 
 data class PlaylistData (
     val image: Int,

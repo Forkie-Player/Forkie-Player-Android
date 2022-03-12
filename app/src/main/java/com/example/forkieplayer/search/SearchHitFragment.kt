@@ -1,4 +1,4 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.search
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentSearchHitBinding
 
 class SearchHitFragment : Fragment() {

@@ -1,12 +1,14 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.playlist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.forkieplayer.profile.ProfileActivity
+import com.example.forkieplayer.R
+import com.example.forkieplayer.search.SearchActivity
 import com.example.forkieplayer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

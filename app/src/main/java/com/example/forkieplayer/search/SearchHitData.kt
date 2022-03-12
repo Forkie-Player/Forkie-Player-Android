@@ -1,4 +1,4 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.search
 
 data class SearchHittData (
     val thumbnailImg: Int,

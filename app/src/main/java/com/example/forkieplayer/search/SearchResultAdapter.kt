@@ -1,4 +1,4 @@
-package com.example.forkieplayer
+package com.example.forkieplayer.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
