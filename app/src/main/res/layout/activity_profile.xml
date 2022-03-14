@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_family"
             android:text="가입일"
-            android:textColor="@color/forkie_g2"
+            android:textColor="@color/forkie_g3"
             android:textSize="13sp" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:layout_marginLeft="7dp"
             android:fontFamily="@font/font_family_en"
             android:text="2022-01-25"
-            android:textColor="@color/forkie_g2"
+            android:textColor="@color/forkie_g3"
             android:textSize="13sp" />
 
     </LinearLayout>

@@ -27,7 +27,10 @@
         <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/menu/toolbar_profile.xml" value="0.24791666666666667" />
         <entry key="..\:/Users/2minh/Desktop/Forkie-Player-Android/app/src/main/res/menu/toolbar_search.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/drawable/ic_search_back.xml" value="0.225" />
+        <entry key="app/src/main/res/font/font_family.xml" value="0.2296875" />
+        <entry key="app/src/main/res/font/font_family_en.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_search_hit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.21822916666666667" />

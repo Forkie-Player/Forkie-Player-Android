@@ -29,6 +29,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:textSize="13sp"
-        android:textColor="@color/forkie_g3"/>
+        android:textColor="@color/forkie_g4"/>
 
 </LinearLayout>
