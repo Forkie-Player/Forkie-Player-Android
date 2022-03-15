@@ -1,13 +1,19 @@
 package com.example.forkieplayer.playlist
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forkieplayer.databinding.RecyclerPlaylistItemBinding
 
 class PlaylistViewHolder(val binding: RecyclerPlaylistItemBinding): RecyclerView.ViewHolder(binding.root)
 
 class PlaylistAdapter(val datas: List<PlaylistData>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    lateinit var context: Context
+
     // 항목의 개수 반환
     override fun getItemCount(): Int {
         return datas.size
@@ -15,6 +21,7 @@ class PlaylistAdapter(val datas: List<PlaylistData>): RecyclerView.Adapter<Recyc
 
     // ViewHolder를 준비하기 위해 호출, ViewHolder 객체를 생성해서 리턴
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        context = parent.context
         return PlaylistViewHolder(RecyclerPlaylistItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
 

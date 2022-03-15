@@ -17,4 +17,7 @@
     <color name="forkie_g3">#AEAEAE</color>
     <color name="forkie_g4">#757575</color>
     <color name="forkie_g5">#454545</color>
+
+    <!-- outline box unfocus 상태일 때 색상 지정 -->
+    <color name="mtrl_textinput_default_box_stroke_color">@color/forkie_g1</color>
 </resources>
