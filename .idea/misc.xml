@@ -32,6 +32,7 @@
         <entry key="app/src/main/res/drawable/ic_playlist_default.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/ic_search_back.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/solid_button_activate.xml" value="0.3285" />
+        <entry key="app/src/main/res/drawable/solid_button_dialog_selector.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_inactivate.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_toggle.xml" value="0.3285" />
         <entry key="app/src/main/res/font/font_family.xml" value="0.2296875" />
@@ -40,7 +41,10 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_playlist_add_bottom_sheet.xml" value="0.6989737742303307" />
+        <entry key="app/src/main/res/layout/fragment_playlist_delete_dialog.xml" value="0.37681159420289856" />
+        <entry key="app/src/main/res/layout/fragment_playlist_edit_bottom_sheet.xml" value="0.2046875" />
         <entry key="app/src/main/res/layout/fragment_playlist_modify_bottom_sheet.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_playlist_name_bottom_sheet.xml" value="0.37681159420289856" />
         <entry key="app/src/main/res/layout/fragment_search_hit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/recycler_playlist_item.xml" value="0.4036458333333333" />

@@ -1,16 +1,19 @@
 package com.example.forkieplayer.playlist
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forkieplayer.databinding.RecyclerPlaylistItemBinding
 
 class PlaylistViewHolder(val binding: RecyclerPlaylistItemBinding): RecyclerView.ViewHolder(binding.root)
 
-class PlaylistAdapter(val datas: List<PlaylistData>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PlaylistAdapter(val datas: List<PlaylistData>, val fragmentManager: FragmentManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var context: Context
 
@@ -31,5 +34,13 @@ class PlaylistAdapter(val datas: List<PlaylistData>): RecyclerView.Adapter<Recyc
         binding.ivImage.setImageResource(datas.get(position).image)
         binding.tvTitle.text = datas.get(position).title
         binding.tvCount.text = datas.get(position).count.toString()
+
+        // 리사이클러뷰 아이템 롱클릭시 플레이리스트 편집 fragment 뜨게 함
+        holder.itemView.setOnLongClickListener {
+            FragmentPlaylistEditBottomSheet.newInstance().show(
+                fragmentManager, FragmentPlaylistEditBottomSheet.TAG
+            )
+            return@setOnLongClickListener(true)
+        }
     }
 }

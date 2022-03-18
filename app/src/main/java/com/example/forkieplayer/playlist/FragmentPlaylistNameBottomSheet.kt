@@ -12,11 +12,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.forkieplayer.R
-import com.example.forkieplayer.databinding.FragmentPlaylistAddBottomSheetBinding
+import com.example.forkieplayer.databinding.FragmentPlaylistNameBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FragmentPlaylistAddBottomSheet : BottomSheetDialogFragment() {
+class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
 
     lateinit var mainActivity: MainActivity
 
@@ -26,7 +26,7 @@ class FragmentPlaylistAddBottomSheet : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = FragmentPlaylistAddBottomSheetBinding.inflate(inflater, container, false)
+        val binding = FragmentPlaylistNameBottomSheetBinding.inflate(inflater, container, false)
 
         // 처음에는 버튼 비활성화
         binding.btnCreate.isEnabled = false
@@ -54,7 +54,7 @@ class FragmentPlaylistAddBottomSheet : BottomSheetDialogFragment() {
         // 입력 내용 서버에 보내기
         binding.btnCreate.setOnClickListener {
             //TODO:서버에 플레이스트 정보 보내기
-            Toast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is created!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is changed!", Toast.LENGTH_SHORT).show()
             dismiss()
         }
 
@@ -68,9 +68,9 @@ class FragmentPlaylistAddBottomSheet : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val TAG = "FragmentPlaylistAddBottomSheet"
-        fun newInstance(): FragmentPlaylistAddBottomSheet{
-            return FragmentPlaylistAddBottomSheet()
+        const val TAG = "FragmentPlaylistNameBottomSheet"
+        fun newInstance(): FragmentPlaylistNameBottomSheet{
+            return FragmentPlaylistNameBottomSheet()
         }
     }
 }

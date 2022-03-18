@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var adapter: PlaylistAdapter
+    lateinit var fragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +27,20 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        // 리사이클러뷰 설정
         val datas = mutableListOf<PlaylistData>()
         datas.add(PlaylistData(R.drawable.ic_playlist_default, "default", 0))
 
+        fragmentManager = this.supportFragmentManager
+
         binding.recyclerPlaylist.layoutManager = GridLayoutManager(this, 2)
-        adapter = PlaylistAdapter(datas)
+        adapter = PlaylistAdapter(datas, fragmentManager)
         binding.recyclerPlaylist.adapter = adapter
 
+        // 하단 추가 버튼 클릭시 플레이리스트 편집 fragment 뜨게 함
         binding.btnBottom.setOnClickListener {
             FragmentPlaylistAddBottomSheet.newInstance().show(
-                this.supportFragmentManager, FragmentPlaylistAddBottomSheet.TAG
+                fragmentManager, FragmentPlaylistAddBottomSheet.TAG
             )
         }
     }
