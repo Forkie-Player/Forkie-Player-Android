@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityProfileBinding
+import com.example.forkieplayer.playlist.FragmentPlaylistAddBottomSheet
 import java.lang.Exception
 
 class ProfileActivity : AppCompatActivity() {
@@ -64,7 +65,9 @@ class ProfileActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
             R.id.menu -> {
-                Toast.makeText(this, "menu icon click", Toast.LENGTH_SHORT).show()
+                FragmentProfileMenuBottomSheet.newInstance().show(
+                    this.supportFragmentManager, FragmentProfileMenuBottomSheet.TAG
+                )
                 super.onOptionsItemSelected(item)
             }
             else -> {
