@@ -8,13 +8,11 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityProfileBinding
-import com.example.forkieplayer.playlist.FragmentPlaylistAddBottomSheet
 import java.lang.Exception
 
 class ProfileActivity : AppCompatActivity() {

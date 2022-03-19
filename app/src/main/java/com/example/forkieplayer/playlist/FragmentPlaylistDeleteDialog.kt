@@ -8,9 +8,9 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentPlaylistDeleteDialogBinding
 
@@ -34,7 +34,7 @@ class FragmentPlaylistDeleteDialog : DialogFragment() {
 
         binding.btnDelete.setOnClickListener {
             //TODO:서버에 삭제 정보 보내기
-            Toast.makeText(mainActivity, "deleted!", Toast.LENGTH_SHORT).show()
+            CustomToast.makeText(mainActivity, "deleted!")?.show()
             dismiss()
         }
 

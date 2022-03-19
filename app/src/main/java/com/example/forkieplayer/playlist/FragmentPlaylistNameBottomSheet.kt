@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentPlaylistNameBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -41,7 +40,7 @@ class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
 
                 // 제목 12자 이상 쓰여지면 토스트 메시지
                 if (message.length == 12) {
-                    Toast.makeText(mainActivity, "제목은 12자 이하로 입력해주세요.", Toast.LENGTH_SHORT).show()
+                    CustomToast.makeText(mainActivity, "제목은 12자 이하로 입력해주세요.")?.show()
                 }
             }
 
@@ -54,7 +53,7 @@ class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
         // 입력 내용 서버에 보내기
         binding.btnCreate.setOnClickListener {
             //TODO:서버에 플레이스트 정보 보내기
-            Toast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is changed!", Toast.LENGTH_SHORT).show()
+            CustomToast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is changed!")?.show()
             dismiss()
         }
 
