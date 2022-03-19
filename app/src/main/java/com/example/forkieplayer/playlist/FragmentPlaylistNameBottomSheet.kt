@@ -60,7 +60,7 @@ class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
         return binding.root
     }
 
-    // 키보드 띄울 때 버튼 가려지지 않도록 함
+    // 모달 스타일 적용
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
