@@ -25,11 +25,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/font_family_en"
+                android:fontFamily="@font/montserrat_semibold"
                 android:text="PROFILE"
                 android:textColor="@color/forkie_b1"
-                android:textSize="19sp"
-                android:textStyle="bold" />
+                android:textSize="19sp" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -69,11 +68,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:fontFamily="@font/font_family_en"
+        android:fontFamily="@font/montserrat_bold"
         android:text="mezinee"
-        android:textColor="@color/black"
+        android:textColor="@color/forkie_b1"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_playlist_image" />
@@ -90,7 +88,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/font_family"
+            android:fontFamily="@font/pretendard_regular"
             android:text="가입일"
             android:textColor="@color/forkie_g3"
             android:textSize="13sp" />
@@ -99,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            android:fontFamily="@font/font_family_en"
+            android:fontFamily="@font/montserrat_medium"
             android:text="2022-01-25"
             android:textColor="@color/forkie_g3"
             android:textSize="13sp" />

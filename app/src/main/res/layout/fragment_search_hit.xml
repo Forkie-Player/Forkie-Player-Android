@@ -12,8 +12,8 @@
         android:layout_marginTop="9dp"
         android:text="이런 영상은 어때요? 🔥"
         android:textColor="@color/forkie_b1"
-        android:textStyle="bold"
-        android:fontFamily="@font/font_family"
+        android:textSize="18sp"
+        android:fontFamily="@font/pretendard_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

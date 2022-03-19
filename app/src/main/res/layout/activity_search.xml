@@ -25,11 +25,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/font_family_en"
+                android:fontFamily="@font/montserrat_semibold"
                 android:text="SEARCH"
                 android:textColor="@color/forkie_b1"
-                android:textSize="19sp"
-                android:textStyle="bold" />
+                android:textSize="19sp" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -58,7 +57,7 @@
             android:layout_height="match_parent"
             android:imeOptions="actionSearch"
             android:singleLine="true"
-            android:fontFamily="@font/font_family"
+            android:fontFamily="@font/pretendard_regular"
             android:hint="영상을 검색해보세요."
             android:textColorHint="@color/forkie_g3"
             android:textSize="16sp"

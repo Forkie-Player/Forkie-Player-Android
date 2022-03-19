@@ -12,11 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:fontFamily="@font/font_family"
+        android:fontFamily="@font/pretendard_semibold"
         android:text="프로필 옵션"
         android:textColor="@color/forkie_b1"
-        android:textSize="19sp"
-        android:textStyle="bold" />
+        android:textSize="19sp" />
 
     <LinearLayout
         android:id="@+id/layout_password"
@@ -35,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
-            android:fontFamily="@font/font_family"
+            android:fontFamily="@font/pretendard_regular"
             android:text="비밀번호 변경"
             android:textColor="@color/forkie_g4"
             android:textSize="16sp" />
@@ -59,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
-            android:fontFamily="@font/font_family"
+            android:fontFamily="@font/pretendard_regular"
             android:text="로그아웃"
             android:textColor="@color/forkie_g4"
             android:textSize="16sp" />
@@ -84,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
-            android:fontFamily="@font/font_family"
+            android:fontFamily="@font/pretendard_regular"
             android:text="회원탈퇴"
             android:textColor="@color/forkie_g4"
             android:textSize="16sp" />
