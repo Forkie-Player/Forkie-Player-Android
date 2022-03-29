@@ -34,7 +34,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_playlist_image"
+        android:id="@+id/cv_profile"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="150dp"
@@ -61,8 +61,8 @@
         android:layout_marginLeft="107dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_select_profile"
-        app:layout_constraintStart_toStartOf="@+id/cv_playlist_image"
-        app:layout_constraintTop_toTopOf="@+id/cv_playlist_image" />
+        app:layout_constraintStart_toStartOf="@+id/cv_profile"
+        app:layout_constraintTop_toTopOf="@+id/cv_profile" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_playlist_image" />
+        app:layout_constraintTop_toBottomOf="@+id/cv_profile" />
 
     <LinearLayout
         android:layout_width="match_parent"
