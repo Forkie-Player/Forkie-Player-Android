@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.7008652657601978" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_search_result.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_video.xml" value="0.7935943060498221" />
         <entry key="app/src/main/res/layout/fragment_custom_toast.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_playlist_add_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_playlist_delete_dialog.xml" value="0.37681159420289856" />

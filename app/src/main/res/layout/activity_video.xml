@@ -118,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@+id/line" />
 
     <TextView
-        android:id="@+id/tv_slide_start"
+        android:id="@+id/tv_slide_start_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_medium"
@@ -128,7 +128,107 @@
         app:layout_constraintTop_toBottomOf="@+id/slider" />
 
     <TextView
-        android:id="@+id/tv_slide_end"
+        android:id="@+id/tv_slider_divide_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text=":"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slide_start_hour"
+        app:layout_constraintStart_toEndOf="@+id/tv_slide_start_hour"
+        app:layout_constraintTop_toTopOf="@+id/tv_slide_start_hour" />
+
+    <TextView
+        android:id="@+id/tv_slide_start_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slider_divide_1"
+        app:layout_constraintStart_toEndOf="@+id/tv_slider_divide_1"
+        app:layout_constraintTop_toTopOf="@+id/tv_slider_divide_1" />
+
+    <TextView
+        android:id="@+id/tv_slider_divide_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text=":"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slide_start_min"
+        app:layout_constraintStart_toEndOf="@+id/tv_slide_start_min"
+        app:layout_constraintTop_toTopOf="@+id/tv_slide_start_min" />
+
+    <TextView
+        android:id="@+id/tv_slide_start_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slider_divide_2"
+        app:layout_constraintStart_toEndOf="@+id/tv_slider_divide_2"
+        app:layout_constraintTop_toTopOf="@+id/tv_slider_divide_2" />
+
+    <TextView
+        android:id="@+id/tv_slide_end_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slider_divide_3"
+        app:layout_constraintEnd_toStartOf="@+id/tv_slider_divide_3"
+        app:layout_constraintTop_toTopOf="@+id/tv_slider_divide_3" />
+
+    <TextView
+        android:id="@+id/tv_slider_divide_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text=":"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slide_end_min"
+        app:layout_constraintEnd_toStartOf="@+id/tv_slide_end_min"
+        app:layout_constraintTop_toTopOf="@+id/tv_slide_end_min" />
+
+    <TextView
+        android:id="@+id/tv_slide_end_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slider_divide_4"
+        app:layout_constraintEnd_toStartOf="@+id/tv_slider_divide_4"
+        app:layout_constraintTop_toTopOf="@+id/tv_slider_divide_4" />
+
+    <TextView
+        android:id="@+id/tv_slider_divide_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text=":"
+        android:textColor="@color/forkie_g3"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_slide_end_sec"
+        app:layout_constraintEnd_toStartOf="@+id/tv_slide_end_sec"
+        app:layout_constraintTop_toTopOf="@+id/tv_slide_end_sec" />
+
+    <TextView
+        android:id="@+id/tv_slide_end_sec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_medium"
@@ -149,7 +249,7 @@
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_slide_start">
+        app:layout_constraintTop_toBottomOf="@+id/tv_slide_start_hour">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -168,17 +268,76 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_start_time"
+            <EditText
+                android:id="@+id/et_start_time_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="2dp"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/montserrat_medium"
+                android:hint="00"
+                android:inputType="number"
+                android:maxLength="2"
+                android:nextFocusDown="@id/et_start_time_min"
                 android:textColor="@color/forkie_g4"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@+id/line2"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_divide_1"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_divide_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text=":"
+                app:layout_constraintBottom_toBottomOf="@+id/et_start_time_hour"
+                app:layout_constraintEnd_toStartOf="@+id/et_start_time_min"
+                app:layout_constraintTop_toTopOf="@+id/et_start_time_hour" />
+
+            <EditText
+                android:id="@+id/et_start_time_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="00"
+                android:inputType="number"
+                android:maxLength="2"
+                android:nextFocusDown="@id/et_start_time_sec"
+                android:textColor="@color/forkie_g4"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_divide_1"
+                app:layout_constraintEnd_toStartOf="@+id/tv_divide_2"
+                app:layout_constraintTop_toTopOf="@+id/tv_divide_1" />
+
+            <TextView
+                android:id="@+id/tv_divide_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text=":"
+                app:layout_constraintBottom_toBottomOf="@+id/et_start_time_min"
+                app:layout_constraintEnd_toStartOf="@+id/et_start_time_sec"
+                app:layout_constraintTop_toTopOf="@+id/et_start_time_min" />
+
+            <EditText
+                android:id="@+id/et_start_time_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="number"
+                android:maxLength="2"
+                android:hint="00"
+                android:textColor="@color/forkie_g4"
+                android:textSize="15sp"
+                android:imeOptions="actionDone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_divide_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_divide_2" />
 
             <View
                 android:id="@+id/line2"
@@ -201,17 +360,76 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line2" />
 
-            <TextView
-                android:id="@+id/tv_end_time"
+            <EditText
+                android:id="@+id/et_end_time_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="2dp"
+                android:background="@android:color/transparent"
                 android:fontFamily="@font/montserrat_medium"
+                android:hint="00"
+                android:inputType="number"
+                android:maxLength="2"
+                android:nextFocusDown="@id/et_end_time_min"
                 android:textColor="@color/forkie_g4"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_divide_3"
                 app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+            <TextView
+                android:id="@+id/tv_divide_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text=":"
+                app:layout_constraintBottom_toBottomOf="@+id/et_end_time_hour"
+                app:layout_constraintEnd_toStartOf="@+id/et_end_time_min"
+                app:layout_constraintTop_toTopOf="@+id/et_end_time_hour" />
+
+            <EditText
+                android:id="@+id/et_end_time_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="00"
+                android:inputType="number"
+                android:maxLength="2"
+                android:nextFocusDown="@id/et_end_time_sec"
+                android:textColor="@color/forkie_g4"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_divide_3"
+                app:layout_constraintEnd_toStartOf="@+id/tv_divide_4"
+                app:layout_constraintTop_toTopOf="@+id/tv_divide_3" />
+
+            <TextView
+                android:id="@+id/tv_divide_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:text=":"
+                app:layout_constraintBottom_toBottomOf="@+id/et_end_time_min"
+                app:layout_constraintEnd_toStartOf="@+id/et_end_time_sec"
+                app:layout_constraintTop_toTopOf="@+id/et_end_time_min" />
+
+            <EditText
+                android:id="@+id/et_end_time_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="number"
+                android:maxLength="2"
+                android:hint="00"
+                android:textColor="@color/forkie_g4"
+                android:textSize="15sp"
+                android:imeOptions="actionDone"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_divide_4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_divide_4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
