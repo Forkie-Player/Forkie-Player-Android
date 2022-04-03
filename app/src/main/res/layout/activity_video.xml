@@ -148,9 +148,8 @@
         android:fontFamily="@font/montserrat_medium"
         android:textColor="@color/forkie_g3"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_slider_divide_1"
         app:layout_constraintStart_toEndOf="@+id/tv_slider_divide_1"
-        app:layout_constraintTop_toTopOf="@+id/tv_slider_divide_1" />
+        app:layout_constraintTop_toBottomOf="@+id/slider" />
 
     <TextView
         android:id="@+id/tv_slider_divide_2"
@@ -242,14 +241,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         app:cardBackgroundColor="@color/forkie_g1"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_slide_start_hour">
+        app:layout_constraintTop_toBottomOf="@+id/tv_slide_end_sec">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -329,12 +328,12 @@
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/montserrat_medium"
+                android:hint="00"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="2"
-                android:hint="00"
                 android:textColor="@color/forkie_g4"
                 android:textSize="15sp"
-                android:imeOptions="actionDone"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_divide_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_divide_2" />
@@ -421,12 +420,12 @@
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/montserrat_medium"
+                android:hint="00"
+                android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLength="2"
-                android:hint="00"
                 android:textColor="@color/forkie_g4"
                 android:textSize="15sp"
-                android:imeOptions="actionDone"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_divide_4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_divide_4" />

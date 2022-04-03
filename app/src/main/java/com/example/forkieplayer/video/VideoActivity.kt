@@ -3,11 +3,12 @@ package com.example.forkieplayer.video
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
+import android.view.inputmethod.InputMethodManager
+import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityVideoBinding
 import com.google.android.material.slider.RangeSlider
@@ -20,8 +21,14 @@ class VideoActivity : AppCompatActivity() {
     lateinit var binding: ActivityVideoBinding
     lateinit var myYoutubePlayer: YouTubePlayer
     val timeFormat = DecimalFormat("00")
+
     val videoId = "nq0IApxv6Cg"
     val videoLength = 3287.0f
+
+    var maxHour = videoLength.toInt() / 3600
+    var maxMin = 59
+    var maxSec = 59
+
     var bStartTime = 0.0f
     var bEndTime = videoLength
     var aStartTime = 0.0f
@@ -45,10 +52,13 @@ class VideoActivity : AppCompatActivity() {
         // 슬라이더 움직일 때
         sliderMove()
 
-        // TODO: EditText 변경했을 때
+        // EditText 변경했을 때
         timeTextChange()
 
         // TODO: 추가 버튼 눌렀을 때
+        binding.btnAdd.setOnClickListener {
+            CustomToast.makeText(this, "시작 시간 : ${aStartTime}\n끝 시간 : ${aEndTime}")?.show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,7 +78,7 @@ class VideoActivity : AppCompatActivity() {
         }
     }
 
-    fun setInitial() {
+    private fun setInitial() {
         binding.youtubePlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 myYoutubePlayer = youTubePlayer
@@ -79,12 +89,34 @@ class VideoActivity : AppCompatActivity() {
             }
         })
 
+        setHourIfZero()
+
         binding.slider.valueFrom = 0.0f
         binding.slider.valueTo = videoLength
         binding.slider.values = arrayListOf(0.0f, videoLength)
+
+        if (maxHour < 1) {
+            maxMin = videoLength.toInt() / 60
+            if (maxMin < 1) {
+                maxSec = videoLength.toInt()
+            }
+        }
     }
 
-    fun sliderMove() {
+    private fun setHourIfZero() {
+        if (getHour(videoLength) == "00") {
+            binding.tvSlideStartHour.visibility = View.GONE
+            binding.tvSliderDivide1.visibility = View.GONE
+            binding.tvSlideEndHour.visibility = View.GONE
+            binding.tvSliderDivide3.visibility = View.GONE
+            binding.etStartTimeHour.visibility = View.GONE
+            binding.tvDivide1.visibility = View.GONE
+            binding.etEndTimeHour.visibility = View.GONE
+            binding.tvDivide3.visibility = View.GONE
+        }
+    }
+
+    private fun sliderMove() {
         binding.slider.addOnSliderTouchListener(object : RangeSlider.OnSliderTouchListener{
             @SuppressLint("RestrictedApi")
             override fun onStartTrackingTouch(slider: RangeSlider) {
@@ -108,38 +140,76 @@ class VideoActivity : AppCompatActivity() {
         })
     }
 
-    fun timeTextChange() {
+    private fun timeTextChange() {
         binding.etStartTimeSec.setOnEditorActionListener { textView, action, keyEvent ->
             var handled = false
-            var hour = binding.etStartTimeHour.text.toString().toFloat()
-            var min = binding.etStartTimeMin.text.toString().toFloat()
-            var sec = binding.etStartTimeSec.text.toString().toFloat()
-
-            aStartTime = getPointSec(hour, min, sec)
+            val hour = binding.etStartTimeHour.text.toString().toFloat()
+            val min = binding.etStartTimeMin.text.toString().toFloat()
+            val sec = binding.etStartTimeSec.text.toString().toFloat()
+            val time = getPointSec(hour, min, sec)
 
             if (action == EditorInfo.IME_ACTION_DONE) {
-                changeStart(aStartTime)
-                binding.slider.values = arrayListOf(aStartTime, aEndTime)
-                handled = true
+                if (checkValid(hour, min, sec)) {
+                    if (time < aEndTime) {
+                        aStartTime = time
+                        changeStart(aStartTime)
+                        handled = true
+                    } else {
+                        CustomToast.makeText(this, "시작 지점이 끝 지점보다 큽니다.")?.show()
+                        binding.etStartTimeMin.setText(getHour(aStartTime))
+                        binding.etStartTimeMin.setText(getMin(aStartTime))
+                        binding.etStartTimeSec.setText(getSec(aStartTime))
+                    }
+                }
+                else {
+                    CustomToast.makeText(this, "입력값이 유효하지 않습니다.")?.show()
+                    binding.etStartTimeMin.setText(getHour(aStartTime))
+                    binding.etStartTimeMin.setText(getMin(aStartTime))
+                    binding.etStartTimeSec.setText(getSec(aStartTime))
+                }
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
             }
             handled
         }
 
         binding.etEndTimeSec.setOnEditorActionListener { textView, action, keyEvent ->
             var handled = false
-            var hour = binding.etEndTimeHour.text.toString().toFloat()
-            var min = binding.etEndTimeMin.text.toString().toFloat()
-            var sec = binding.etEndTimeSec.text.toString().toFloat()
-
-            aEndTime = getPointSec(hour, min, sec)
+            val hour = binding.etEndTimeHour.text.toString().toFloat()
+            val min = binding.etEndTimeMin.text.toString().toFloat()
+            val sec = binding.etEndTimeSec.text.toString().toFloat()
+            val time = getPointSec(hour, min, sec)
 
             if (action == EditorInfo.IME_ACTION_DONE) {
-                changeEnd(aEndTime)
-                binding.slider.values = arrayListOf(aStartTime, aEndTime)
-                handled = true
+                if (checkValid(hour, min, sec)) {
+                    if (time > aStartTime) {
+                        aEndTime = time
+                        changeEnd(aEndTime)
+                        handled = true
+                    } else {
+                        CustomToast.makeText(this, "끝 지점이 시작 지점보다 작습니다.")?.show()
+                        binding.etEndTimeHour.setText(getHour(aEndTime))
+                        binding.etEndTimeMin.setText(getMin(aEndTime))
+                        binding.etEndTimeSec.setText(getSec(aEndTime))
+                    }
+                }
+                else {
+                    CustomToast.makeText(this, "입력값이 유효하지 않습니다.")?.show()
+                    binding.etEndTimeHour.setText(getHour(aEndTime))
+                    binding.etEndTimeMin.setText(getMin(aEndTime))
+                    binding.etEndTimeSec.setText(getSec(aEndTime))
+                }
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
             }
             handled
         }
+    }
+
+    private fun checkValid(hour: Float, min: Float, sec: Float) : Boolean {
+        if (hour<=maxHour && min<=maxMin && sec<=maxSec)
+            return true
+        return false
     }
 
     fun changeStart(time: Float) {
@@ -151,6 +221,7 @@ class VideoActivity : AppCompatActivity() {
         binding.tvSlideStartMin.text = getMin(time)
         binding.tvSlideStartSec.text = getSec(time)
 
+        binding.slider.values = arrayListOf(aStartTime, aEndTime)
         myYoutubePlayer.seekTo(time)
         bStartTime = time
     }
@@ -164,27 +235,24 @@ class VideoActivity : AppCompatActivity() {
         binding.tvSlideEndMin.text = getMin(time)
         binding.tvSlideEndSec.text = getSec(time)
 
+        binding.slider.values = arrayListOf(aStartTime, aEndTime)
         myYoutubePlayer.seekTo(time)
         bEndTime = time
     }
 
-    fun getHour(time: Float): String {
-        val hour = timeFormat.format((time/3600).toInt())
-        return hour
+    private fun getHour(time: Float): String {
+        return timeFormat.format((time / 3600).toInt())
     }
 
-    fun getMin(time: Float): String {
-        val min = timeFormat.format((time%3600/60).toInt())
-        return min
+    private fun getMin(time: Float): String {
+        return timeFormat.format((time % 3600 / 60).toInt())
     }
 
-    fun getSec(time: Float): String {
-        val sec = timeFormat.format((time%3600%60).toInt())
-        return sec
+    private fun getSec(time: Float): String {
+        return timeFormat.format((time % 3600 % 60).toInt())
     }
 
-    fun getPointSec(hour: Float, min: Float, sec: Float): Float {
-        val total = hour * 3600 + min * 60 + sec
-        return total
+    private fun getPointSec(hour: Float, min: Float, sec: Float): Float {
+        return hour * 3600 + min * 60 + sec
     }
 }
