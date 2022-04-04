@@ -1,13 +1,15 @@
 package com.example.forkieplayer.video
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityVideoBinding
@@ -16,9 +18,16 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import java.text.DecimalFormat
 
+
 class VideoActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityVideoBinding
+
+    val shortFragment = VideoInfoShortFragment()
+    val detailFragment = VideoInfoDetailFragment()
+    val manager = supportFragmentManager
+    val transaction = manager.beginTransaction()
+
     lateinit var myYoutubePlayer: YouTubePlayer
     val timeFormat = DecimalFormat("00")
 
@@ -43,6 +52,10 @@ class VideoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
+
+        // 액티비티 실행시 hitFragment 실행
+        transaction.add(R.id.fragment_layout, shortFragment)
+        transaction.commit()
 
         lifecycle.addObserver(binding.youtubePlayer)
 
@@ -76,6 +89,18 @@ class VideoActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    fun showDetail() {
+        val tran = manager.beginTransaction()
+        tran.replace(R.id.fragment_layout, detailFragment)
+        tran.commit()
+    }
+
+    fun showShort() {
+        val tran = manager.beginTransaction()
+        tran.replace(R.id.fragment_layout, shortFragment)
+        tran.commit()
     }
 
     private fun setInitial() {
