@@ -1,11 +1,14 @@
 package com.example.forkieplayer.playlist
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forkieplayer.databinding.RecyclerPlaylistItemBinding
+import com.example.forkieplayer.play.PlayActivity
+import com.example.forkieplayer.video.VideoActivity
 
 class PlaylistViewHolder(val binding: RecyclerPlaylistItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -37,6 +40,12 @@ class PlaylistAdapter(val datas: List<PlaylistData>, val fragmentManager: Fragme
                 fragmentManager, FragmentPlaylistEditBottomSheet.TAG
             )
             return@setOnLongClickListener(true)
+        }
+
+        //TODO: 서버 연동하면 플레이리스트 id 같이 보내야할걸..?
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, PlayActivity::class.java)
+            context.startActivity(intent)
         }
     }
 }

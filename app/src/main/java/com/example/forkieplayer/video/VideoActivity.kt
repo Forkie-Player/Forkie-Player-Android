@@ -29,11 +29,10 @@ class VideoActivity : AppCompatActivity() {
     val transaction = manager.beginTransaction()
 
     lateinit var myYoutubePlayer: YouTubePlayer
+    val videoId = "MCXijuMyjro"
+    val videoLength = 13632.0f
+
     val timeFormat = DecimalFormat("00")
-
-    val videoId = "nq0IApxv6Cg"
-    val videoLength = 3287.0f
-
     var maxHour = videoLength.toInt() / 3600
     var maxMin = 59
     var maxSec = 59

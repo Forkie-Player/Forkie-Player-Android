@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".play.FragmentPlaylist">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_playlist_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/forkie_b1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_capture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_list"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_capture_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/pretendard_regular"
+                android:maxLines="1"
+                android:text="[Playlist] 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리"
+                android:textColor="@color/forkie_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_cur_num"
+                app:layout_constraintStart_toEndOf="@+id/iv_capture"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_cur_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:text="1"
+                android:textColor="@color/forkie_g3"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bar"
+                app:layout_constraintEnd_toStartOf="@+id/tv_bar"
+                app:layout_constraintTop_toTopOf="@+id/tv_bar" />
+
+            <TextView
+                android:id="@+id/tv_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:text="/"
+                android:textColor="@color/forkie_g4"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_total_num"
+                app:layout_constraintEnd_toStartOf="@+id/tv_total_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_total_num" />
+
+            <TextView
+                android:id="@+id/tv_total_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:text="12"
+                android:textColor="@color/forkie_g4"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_playlist_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
