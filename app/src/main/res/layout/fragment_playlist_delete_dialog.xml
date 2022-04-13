@@ -19,7 +19,7 @@
             android:layout_marginEnd="51dp"
             android:fontFamily="@font/pretendard_semibold"
             android:text="리스트를 정말 삭제할까요?"
-            android:textColor="@color/forkie_b1"
+            android:textColor="@color/forkie_g5"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,52 +30,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/pretendard_regular"
+            android:fontFamily="@font/pretendard_medium"
             android:gravity="center_horizontal"
-            android:text="리스트에 저장된 영상들도\n함께 삭제됩니다."
+            android:text="리스트에 저장된 영상도 함께 삭제돼요."
             android:textColor="@color/forkie_g3"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:orientation="horizontal"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="142dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/solid_button_no"
+            android:fontFamily="@font/pretendard_medium"
+            android:outlineProvider="none"
+            android:text="취소"
+            android:textColor="@color/forkie_g4"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delete"
+            android:layout_width="142dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/solid_button_yes"
+            android:fontFamily="@font/pretendard_medium"
+            android:outlineProvider="none"
+            android:text="삭제"
+            android:textColor="@color/forkie_g5"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_description">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_cancel"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/solid_button_dialog_selector"
-                android:fontFamily="@font/pretendard_regular"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="취소"
-                android:textColor="@color/forkie_g4"
-                android:textSize="16sp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_delete"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/solid_button_dialog_selector"
-                android:fontFamily="@font/pretendard_regular"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="확인"
-                android:textColor="@color/forkie_g4"
-                android:textSize="16sp" />
-
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

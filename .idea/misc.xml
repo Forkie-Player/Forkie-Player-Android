@@ -34,7 +34,9 @@
         <entry key="app/src/main/res/drawable/solid_button_activate.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_dialog_selector.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_inactivate.xml" value="0.3285" />
+        <entry key="app/src/main/res/drawable/solid_button_no.xml" value="0.312" />
         <entry key="app/src/main/res/drawable/solid_button_toggle.xml" value="0.3285" />
+        <entry key="app/src/main/res/drawable/solid_button_yes.xml" value="0.312" />
         <entry key="app/src/main/res/font/font_family.xml" value="0.2296875" />
         <entry key="app/src/main/res/font/font_family_en.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
