@@ -23,9 +23,10 @@ class FragmentProfileMenuBottomSheet : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentProfileMenuBottomSheetBinding.inflate(inflater, container, false)
 
-        // TODO:password 클릭시 비밀번호 변경하는 fragment 뜨게 함
         binding.layoutPassword.setOnClickListener {
-            CustomToast.makeText(profileActivity, "비밀번호 변경 is clicked!")?.show()
+            FragmentCurrentPasswordBottomSheet.newInstance().show(
+                parentFragmentManager, FragmentCurrentPasswordBottomSheet.TAG
+            )
             dismiss()
         }
 

@@ -43,6 +43,9 @@
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_search_result.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_video.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_change_password_bottom_sheet.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/fragment_check_password_bottom_sheet.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/fragment_current_password_bottom_sheet.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/fragment_custom_toast.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_edit_info_detail.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_edit_info_short.xml" value="0.30932971014492755" />
@@ -50,6 +53,7 @@
         <entry key="app/src/main/res/layout/fragment_edit_video_info_detail.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_edit_video_info_short.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_list_bar.xml" value="0.30932971014492755" />
+        <entry key="app/src/main/res/layout/fragment_password_change_bottom_sheet.xml" value="0.33469202898550726" />
         <entry key="app/src/main/res/layout/fragment_playlist.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_playlist_add_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_playlist_delete_dialog.xml" value="0.37681159420289856" />
