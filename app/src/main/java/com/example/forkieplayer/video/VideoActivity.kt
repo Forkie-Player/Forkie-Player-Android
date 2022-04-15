@@ -140,6 +140,7 @@ class VideoActivity : AppCompatActivity() {
         }
     }
 
+    // 시작/끝 지점 Slide 바꿀 때
     private fun sliderMove() {
         binding.slider.addOnSliderTouchListener(object : RangeSlider.OnSliderTouchListener{
             @SuppressLint("RestrictedApi")
@@ -165,6 +166,7 @@ class VideoActivity : AppCompatActivity() {
     }
 
     private fun timeTextChange() {
+        // 시작 지점 Text 바꿀 때
         binding.etStartTimeSec.setOnEditorActionListener { textView, action, keyEvent ->
             var handled = false
             val hour = binding.etStartTimeHour.text.toString().toFloat()
@@ -173,7 +175,7 @@ class VideoActivity : AppCompatActivity() {
             val time = getPointSec(hour, min, sec)
 
             if (action == EditorInfo.IME_ACTION_DONE) {
-                if (checkValid(hour, min, sec)) {
+                if (checkValid(time, hour, min, sec)) {
                     if (time < aEndTime) {
                         aStartTime = time
                         changeStart(aStartTime)
@@ -186,7 +188,7 @@ class VideoActivity : AppCompatActivity() {
                     }
                 }
                 else {
-                    CustomToast.makeText(this, "입력값이 유효하지 않습니다.")?.show()
+                    CustomToast.makeText(this, "영상길이에 맞는 시간을 입력해주세요.")?.show()
                     binding.etStartTimeMin.setText(getHour(aStartTime))
                     binding.etStartTimeMin.setText(getMin(aStartTime))
                     binding.etStartTimeSec.setText(getSec(aStartTime))
@@ -197,6 +199,7 @@ class VideoActivity : AppCompatActivity() {
             handled
         }
 
+        // 끝 지점 Text 바꿀 때
         binding.etEndTimeSec.setOnEditorActionListener { textView, action, keyEvent ->
             var handled = false
             val hour = binding.etEndTimeHour.text.toString().toFloat()
@@ -205,7 +208,7 @@ class VideoActivity : AppCompatActivity() {
             val time = getPointSec(hour, min, sec)
 
             if (action == EditorInfo.IME_ACTION_DONE) {
-                if (checkValid(hour, min, sec)) {
+                if (checkValid(time, hour, min, sec)) {
                     if (time > aStartTime) {
                         aEndTime = time
                         changeEnd(aEndTime)
@@ -218,7 +221,7 @@ class VideoActivity : AppCompatActivity() {
                     }
                 }
                 else {
-                    CustomToast.makeText(this, "입력값이 유효하지 않습니다.")?.show()
+                    CustomToast.makeText(this, "영상길이에 맞는 시간을 입력해주세요.")?.show()
                     binding.etEndTimeHour.setText(getHour(aEndTime))
                     binding.etEndTimeMin.setText(getMin(aEndTime))
                     binding.etEndTimeSec.setText(getSec(aEndTime))
@@ -230,12 +233,16 @@ class VideoActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkValid(hour: Float, min: Float, sec: Float) : Boolean {
-        if (hour<=maxHour && min<=maxMin && sec<=maxSec)
-            return true
+    // 입력값 유효한지 판단
+    private fun checkValid(time: Float, hour: Float, min: Float, sec: Float) : Boolean {
+        if (time<=videoLength) {
+            if (hour<=maxHour && min<=maxMin && sec<=maxSec)
+                return true
+        }
         return false
     }
 
+    // 시작값 바꿀 때 : 전체적으로 변화
     fun changeStart(time: Float) {
         binding.etStartTimeHour.setText(getHour(time))
         binding.etStartTimeMin.setText(getMin(time))
@@ -250,6 +257,7 @@ class VideoActivity : AppCompatActivity() {
         bStartTime = time
     }
 
+    // 끝값 바꿀 때 : 전체적으로 변화
     fun changeEnd(time: Float) {
         binding.etEndTimeHour.setText(getHour(time))
         binding.etEndTimeMin.setText(getMin(time))
