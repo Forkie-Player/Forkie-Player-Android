@@ -22,8 +22,6 @@ class PlayActivity : AppCompatActivity() {
     val transaction = manager.beginTransaction()
 
     lateinit var myYoutubePlayer: YouTubePlayer
-    val videoId = "nq0IApxv6Cg"
-    val startSeconds = 1055f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +38,6 @@ class PlayActivity : AppCompatActivity() {
         binding.youtubePlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 myYoutubePlayer = youTubePlayer
-                myYoutubePlayer.loadVideo(videoId, startSeconds)
             }
         })
 
@@ -67,6 +64,10 @@ class PlayActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    fun changeVideo(id: String, startTime: Float) {
+        myYoutubePlayer.loadVideo(id, startTime)
     }
 
     fun changePlaylist() {

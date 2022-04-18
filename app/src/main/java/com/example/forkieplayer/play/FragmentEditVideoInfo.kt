@@ -27,4 +27,14 @@ class FragmentEditVideoInfo : Fragment() {
 
         return binding.root
     }
+//        fun changeVideo(title: String, channelImg: Int, channelTitle: String, startTime:Float, endTime:Float) {
+//        binding.tvTitle.text = title
+//        binding.tvTitleD.text = title
+//        binding.ivProfile.setImageResource(channelImg)
+//        binding.ivProfileD.setImageResource(channelImg)
+//        binding.tvName.text = channelTitle
+//        binding.tvNameD.text = channelTitle
+//        binding.tvCaptureStart.text = "${(startTime/3600).toInt()}:${((startTime%3600)/60).toInt()}:${((startTime%3600)%60).toInt()}"
+//        binding.tvCaptureEnd.text = "${(endTime/3600).toInt()}:${((endTime%3600)/60).toInt()}:${((endTime%3600)%60).toInt()}"
+//    }
 }

@@ -26,7 +26,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/pretendard_regular"
-                android:text="[Playlist] 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리"
+                android:text="[Playlist] 행복은 포근한 강아지야🐶 | 기분이 뽀송-해지는 굿모닝 팝"
                 android:textColor="@color/forkie_b1"
                 android:textSize="16sp"
                 android:maxLines="1"
@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/search_profile_sample" />
+                    android:src="@drawable/channel_temp" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -63,7 +63,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="22dp"
                 android:fontFamily="@font/pretendard_medium"
-                android:text="my blue valentine my blue valentine my blue valentine my blue valentine"
+                android:text="essentiall;"
                 android:textColor="@color/forkie_g4"
                 android:textSize="13sp"
                 android:maxLines="1"
@@ -148,7 +148,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/pretendard_regular"
-                android:text="[Playlist] 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리"
+                android:text="[Playlist] 행복은 포근한 강아지야🐶 | 기분이 뽀송-해지는 굿모닝 팝"
                 android:textColor="@color/forkie_b1"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/search_profile_sample" />
+                    android:src="@drawable/channel_temp" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -182,7 +182,7 @@
                 android:layout_marginTop="11dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/pretendard_medium"
-                android:text="my blue valentine my blue valentine my blue valentine my blue valentine"
+                android:text="essentiall;"
                 android:textColor="@color/forkie_g4"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toStartOf="@+id/tv_short_d"
@@ -202,17 +202,41 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_name_d" />
 
             <TextView
-                android:id="@+id/tv_capture_time_d"
+                android:id="@+id/tv_capture_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:text="17:35"
                 android:fontFamily="@font/pretendard_medium"
-                android:text="17:35 ~ 35:12"
                 android:textColor="@color/forkie_g4"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_capture_d"
                 app:layout_constraintStart_toEndOf="@+id/iv_capture_d"
                 app:layout_constraintTop_toTopOf="@+id/iv_capture_d" />
+
+            <TextView
+                android:id="@+id/tv_capture_tilde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="~"
+                android:fontFamily="@font/pretendard_medium"
+                android:textColor="@color/forkie_g4"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_capture_start"
+                app:layout_constraintStart_toEndOf="@id/tv_capture_start"
+                app:layout_constraintTop_toTopOf="@+id/tv_capture_start"/>
+
+            <TextView
+                android:id="@+id/tv_capture_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35:12"
+                android:fontFamily="@font/pretendard_medium"
+                android:textColor="@color/forkie_g4"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_capture_tilde"
+                app:layout_constraintStart_toEndOf="@id/tv_capture_tilde"
+                app:layout_constraintTop_toTopOf="@+id/tv_capture_tilde"/>
 
             <TextView
                 android:id="@+id/tv_short_d"
@@ -262,7 +286,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:visibility="gone"
-                app:constraint_referenced_ids="tv_title_d,cv_profile_d,tv_name_d,iv_capture_d,tv_capture_time_d,tv_short_d,iv_short_d,short_info_d,line_d"
+                app:constraint_referenced_ids="tv_title_d,cv_profile_d,tv_name_d,iv_capture_d,tv_capture_start, tv_capture_tilde, tv_capture_end,tv_short_d,iv_short_d,short_info_d,line_d"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,13 @@
 package com.example.forkieplayer.play
 
 data class PlayData (
-    val thumbnailImg: Int,
+    val id: Int,
     val title: String,
-    val name: String
+    val videoId: String,
+    val sequence: Int,
+    val thumbnail: Int,
+    val start: Int,
+    val end: Int,
+    val channelImage: Int,
+    val channelTitle: String
 )
