@@ -33,7 +33,7 @@ class FragmentProfileMenuBottomSheet : BottomSheetDialogFragment() {
             dismiss()
         }
 
-        binding.layoutLogout.setOnClickListener {
+        binding.layoutSignout.setOnClickListener {
             CustomToast.makeText(profileActivity, "로그아웃 되었습니다.")?.show()
             ActivityCompat.finishAffinity(profileActivity)
             val intent = Intent(profileActivity, IntroActivity::class.java)

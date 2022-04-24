@@ -35,12 +35,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile_menu_temp"/>
+            android:src="@drawable/ic_bottomsheet_password"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
+            android:layout_marginLeft="9dp"
             android:fontFamily="@font/pretendard_regular"
             android:text="비밀번호 변경"
             android:textColor="@color/forkie_g4"
@@ -49,7 +49,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layout_logout"
+        android:id="@+id/layout_signout"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_marginTop="2dp"
@@ -59,12 +59,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile_menu_temp"/>
+            android:src="@drawable/ic_bottomsheet_signout"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
+            android:layout_marginLeft="9dp"
             android:fontFamily="@font/pretendard_regular"
             android:text="로그아웃"
             android:textColor="@color/forkie_g4"
@@ -84,12 +84,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_profile_menu_temp"/>
+            android:src="@drawable/ic_bottomsheet_withdraw"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
+            android:layout_marginLeft="9dp"
             android:fontFamily="@font/pretendard_regular"
             android:text="회원탈퇴"
             android:textColor="@color/forkie_g4"

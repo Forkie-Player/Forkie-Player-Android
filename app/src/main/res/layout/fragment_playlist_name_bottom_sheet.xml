@@ -16,7 +16,7 @@
         android:fontFamily="@font/pretendard_semibold"
         android:text="플레이리스트 편집"
         android:textColor="@color/forkie_b1"
-        android:textSize="19sp" />
+        android:textSize="18sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout"
@@ -46,12 +46,12 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_create"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/solid_button_toggle"
-        android:fontFamily="@font/pretendard_semibold"
+        android:fontFamily="@font/pretendard_medium"
         android:text="확인"
         android:textColor="@color/forkie_white"
-        android:textSize="17sp" />
+        android:textSize="15sp" />
 
 </LinearLayout>

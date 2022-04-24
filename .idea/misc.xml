@@ -63,11 +63,11 @@
         <entry key="app/src/main/res/layout/fragment_list_bar.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_password_change_bottom_sheet.xml" value="0.33469202898550726" />
         <entry key="app/src/main/res/layout/fragment_playlist.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_playlist_add_bottom_sheet.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_playlist_add_bottom_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_playlist_delete_dialog.xml" value="0.37681159420289856" />
-        <entry key="app/src/main/res/layout/fragment_playlist_edit_bottom_sheet.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/fragment_playlist_edit_bottom_sheet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_playlist_modify_bottom_sheet.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/fragment_playlist_name_bottom_sheet.xml" value="0.37681159420289856" />
+        <entry key="app/src/main/res/layout/fragment_playlist_name_bottom_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_profile_menu_bottom_sheet.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_search_hit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.21822916666666667" />
