@@ -1,39 +1,59 @@
 package com.example.forkieplayer.play
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
-import com.example.forkieplayer.R
+import androidx.recyclerview.widget.RecyclerView
+import com.example.forkieplayer.CustomToast
+import com.example.forkieplayer.databinding.RecyclerPlayItemBinding
+import java.util.*
 
-class PlayAdapter(val context: Context, val playData: List<PlayData>): BaseAdapter() {
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_item, null)
+class PlayAdapter(private val datas: MutableList<PlayData>, private val recyclerOnClick: IPlay): RecyclerView.Adapter<PlayAdapter.PlayViewHolder>() {
+    lateinit var context: Context
 
-        val thumbnail = view.findViewById<ImageView>(R.id.iv_thumbnail)
-        val title = view.findViewById<TextView>(R.id.tv_title)
-        val channelTitle = view.findViewById<TextView>(R.id.tv_channel_name)
-
-        val data = playData[position]
-        thumbnail.setImageResource(data.thumbnail)
-        title.text = data.title
-        channelTitle.text = data.channelTitle
-
-        return view
+    override fun getItemCount(): Int {
+        return datas.size
     }
 
-    override fun getCount(): Int {
-        return playData.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlayViewHolder {
+        context = parent.context
+        return PlayViewHolder(RecyclerPlayItemBinding.inflate(LayoutInflater.from(parent.context), parent,false))
     }
 
-    override fun getItem(p0: Int): Any {
-        return playData[p0]
+    override fun onBindViewHolder(holder: PlayViewHolder, position: Int) {
+        holder.bind(datas[position])
+
+        // TODO: 리사이클러뷰 아이템 클릭시 영상 재생되도록 함
+        holder.itemView.setOnClickListener {
+            recyclerOnClick.triggerChangeVideo(datas[position].videoId, datas[position].start.toFloat())
+            CustomToast.makeText(context, "seq : ${datas[position].sequence}, start : ${datas[position].start}, end : ${datas[position].end}")?.show()
+        }
+
+        // TODO: 리사이클러뷰 아이템 롱클릭시 순서 바뀌게 함
+        holder.itemView.setOnLongClickListener {
+            return@setOnLongClickListener(true)
+        }
     }
 
-    override fun getItemId(p0: Int): Long {
-        return 0
+    fun moveItem(fromPosition: Int, toPosition: Int) {
+        Collections.swap(datas, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    class PlayViewHolder(private val binding: RecyclerPlayItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: PlayData) {
+            binding.ivThumbnail.setImageResource(data.thumbnail)
+            binding.tvTitle.text = data.title
+            binding.tvChannelName.text = data.channelTitle
+            binding.ivDelete.setOnClickListener {
+                //TODO : 삭제 눌렀을 때
+                Log.d("2minha", "delete click")
+            }
+            binding.ivEdit.setOnClickListener {
+                //TODO : 수정 눌렀을 때
+                Log.d("2minha", "edit click")
+            }
+        }
     }
 }

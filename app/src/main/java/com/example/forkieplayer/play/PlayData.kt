@@ -4,7 +4,7 @@ data class PlayData (
     val id: Int,
     val title: String,
     val videoId: String,
-    val sequence: Int,
+    var sequence: Int,
     val thumbnail: Int,
     val start: Int,
     val end: Int,
