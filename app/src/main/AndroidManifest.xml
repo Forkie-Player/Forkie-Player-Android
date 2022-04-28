@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForkiePlayer">
         <activity
+            android:name=".play.PlayEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".sign.SignInActivity"
             android:exported="false" />
         <activity
@@ -24,7 +27,8 @@
         <activity
             android:name=".profile.ProfileActivity"
             android:exported="false" />
-        <activity android:name=".playlist.MainActivity"
+        <activity
+            android:name=".playlist.MainActivity"
             android:exported="false" />
         <activity
             android:name=".sign.IntroActivity"

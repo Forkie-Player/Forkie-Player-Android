@@ -50,11 +50,10 @@ class FragmentPlaylist : Fragment(), IPlay {
         for (i in 1..10){
             datas.add(PlayData(i+15, "[Playlist] 행복은 포근한 강아지야🐶 | 기분이 뽀송-해지는 굿모닝 팝 ($i)", "xQcWOm7la0Y", i, R.drawable.video_thumbnail_temp,  range.random(), range.random()+100 ,R.drawable.channel_temp,"essentiall ($i);"))
         }
-        playAdapter = PlayAdapter(datas, this)
+        playAdapter = PlayAdapter(datas, this, parentFragmentManager)
 
         val itemTouchHelperCallback = ItemTouchHelperCallback(playAdapter).apply {
             setClamp(200f)
-//            resources.displayMetrics.widthPixels.toFloat() * (4/15)
         }
         val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
         itemTouchHelper.attachToRecyclerView(binding.recyclerview)

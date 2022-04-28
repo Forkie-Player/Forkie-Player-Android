@@ -1,15 +1,33 @@
 package com.example.forkieplayer.play
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forkieplayer.CustomToast
+import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.RecyclerPlayItemBinding
+import com.example.forkieplayer.playlist.FragmentPlaylistDeleteDialog
+import com.example.forkieplayer.profile.FragmentWithdrawalDialog
+import com.example.forkieplayer.sign.SignInActivity
 import java.util.*
 
-class PlayAdapter(private val datas: MutableList<PlayData>, private val recyclerOnClick: IPlay): RecyclerView.Adapter<PlayAdapter.PlayViewHolder>() {
+class PlayAdapter(private val datas: MutableList<PlayData>, private val recyclerOnClick: IPlay, private val fragmentManager: FragmentManager): RecyclerView.Adapter<PlayAdapter.PlayViewHolder>() {
+    class PlayViewHolder(private val binding: RecyclerPlayItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: PlayData) {
+            binding.ivThumbnail.setImageResource(data.thumbnail)
+            binding.tvTitle.text = data.title
+            binding.tvChannelName.text = data.channelTitle
+        }
+    }
+
     lateinit var context: Context
 
     override fun getItemCount(): Int {
@@ -34,26 +52,23 @@ class PlayAdapter(private val datas: MutableList<PlayData>, private val recycler
         holder.itemView.setOnLongClickListener {
             return@setOnLongClickListener(true)
         }
+
+        holder.itemView.findViewById<ImageView>(R.id.iv_delete).setOnClickListener {
+            FragmentPlayDeleteDialog.newInstance().show(
+                fragmentManager, FragmentPlayDeleteDialog.TAG
+            )
+            Toast.makeText(context, "삭제", Toast.LENGTH_SHORT).show()
+        }
+
+        holder.itemView.findViewById<ImageView>(R.id.iv_edit).setOnClickListener {
+            val intent = Intent(context, PlayEditActivity::class.java)
+            context.startActivity(intent)
+            Toast.makeText(context, "편집", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun moveItem(fromPosition: Int, toPosition: Int) {
         Collections.swap(datas, fromPosition, toPosition)
         notifyItemMoved(fromPosition, toPosition)
-    }
-
-    class PlayViewHolder(private val binding: RecyclerPlayItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: PlayData) {
-            binding.ivThumbnail.setImageResource(data.thumbnail)
-            binding.tvTitle.text = data.title
-            binding.tvChannelName.text = data.channelTitle
-            binding.ivDelete.setOnClickListener {
-                //TODO : 삭제 눌렀을 때
-                Log.d("2minha", "delete click")
-            }
-            binding.ivEdit.setOnClickListener {
-                //TODO : 수정 눌렀을 때
-                Log.d("2minha", "edit click")
-            }
-        }
     }
 }

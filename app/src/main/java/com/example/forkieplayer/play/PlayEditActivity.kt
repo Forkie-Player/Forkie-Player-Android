@@ -1,30 +1,27 @@
-package com.example.forkieplayer.video
+package com.example.forkieplayer.play
 
 import android.annotation.SuppressLint
-import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
-import com.example.forkieplayer.databinding.ActivityVideoBinding
+import com.example.forkieplayer.databinding.ActivityPlayEditBinding
 import com.google.android.material.slider.RangeSlider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import java.text.DecimalFormat
 
+class PlayEditActivity : AppCompatActivity() {
 
-class VideoActivity : AppCompatActivity() {
+    lateinit var binding: ActivityPlayEditBinding
 
-    lateinit var binding: ActivityVideoBinding
-
-    val shortFragment = VideoInfoShortFragment()
-    val detailFragment = VideoInfoDetailFragment()
+    val shortFragment = FragmentVideoEditInfoShort()
+    val detailFragment = FragmentVideoEditInfoDetail()
     val manager = supportFragmentManager
     val transaction = manager.beginTransaction()
 
@@ -44,13 +41,13 @@ class VideoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityVideoBinding.inflate(layoutInflater)
+        binding = ActivityPlayEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back_white)
 
         // 액티비티 실행시 shortInfo 실행
         transaction.add(R.id.fragment_layout, shortFragment)
@@ -66,21 +63,22 @@ class VideoActivity : AppCompatActivity() {
 
         // EditText 변경했을 때
         timeTextChange()
-
-        // TODO: 추가 버튼 눌렀을 때
-        binding.btnAdd.setOnClickListener {
-            CustomToast.makeText(this, "시작 시간 : ${aStartTime}\n끝 시간 : ${aEndTime}")?.show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_search, menu)
+        menuInflater.inflate(R.menu.toolbar_play_edit, menu)
         return true
     }
+    //
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item?.itemId) {
-            android.R.id.home -> {
+            android.R.id.home->{
+                finish()
+                super.onOptionsItemSelected(item)
+            }
+            R.id.complete->{
+                CustomToast.makeText(this, "시작 시간 : ${aStartTime}\n끝 시간 : ${aEndTime}")?.show()
                 finish()
                 super.onOptionsItemSelected(item)
             }

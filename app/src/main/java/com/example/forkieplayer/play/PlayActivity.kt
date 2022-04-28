@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.FragmentManager
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityPlayBinding
 import com.example.forkieplayer.profile.FragmentProfileMenuBottomSheet
