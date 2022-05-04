@@ -23,9 +23,16 @@ class SignInActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
 
-        binding.btnSignin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        binding.apply {
+            tvFindPwd.setOnClickListener {
+                //TODO: 비밀번호 찾기 뷰로 이동
+                val intent = Intent(this@SignInActivity, FindPasswordActivity::class.java)
+                startActivity(intent)
+            }
+            btnSignin.setOnClickListener {
+                val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

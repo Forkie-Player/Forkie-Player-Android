@@ -20,56 +20,59 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:menu="@menu/toolbar_signin">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pretendard_semibold"
-                android:text="로그인"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textColor="@color/forkie_b1"
-                android:textSize="17sp" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/pretendard_semibold"
+        android:maxLines="1"
+        android:text="로그인"
+        android:textColor="@color/forkie_b1"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/idFilledTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="30dp"
-        android:hint="아이디"
-        app:boxBackgroundColor="@color/forkie_white"
-        app:boxStrokeColor="@color/signin_box_color"
-        app:hintTextColor="@color/forkie_g3"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="22dp"
+        app:boxStrokeWidth="0dp"
+        app:boxBackgroundColor="@color/forkie_g1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_id"
-            androidfontFamily="@font/pretendard_regular"
+            android:fontFamily="@font/pretendard_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="아이디"
+            android:textColorHint="@color/forkie_g2"
             android:maxLines="1"
             android:textColor="@color/forkie_b1"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pwdFilledTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
-        android:hint="비밀번호"
-        app:boxBackgroundColor="@color/forkie_white"
-        app:boxStrokeColor="@color/signin_box_color"
-        app:hintTextColor="@color/forkie_g3"
+        android:layout_marginEnd="22dp"
+        app:boxStrokeWidth="0dp"
+        app:boxBackgroundColor="@color/forkie_g1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idFilledTextField"
@@ -79,40 +82,42 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_medium"
+            android:hint="비밀번호"
             android:inputType="textPassword"
-            android:fontFamily="@font/pretendard_regular"
-            android:textSize="16sp"
+            android:maxLines="1"
             android:textColor="@color/forkie_b1"
-            android:maxLines="1" />
+            android:textColorHint="@color/forkie_g2"
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_find_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/pretendard_regular"
+        android:textSize="12sp"
+        android:text="비밀번호를 잊어버리셨나요?"
+        android:textColor="@color/forkie_g5"
+        app:layout_constraintStart_toStartOf="@+id/pwdFilledTextField"
+        app:layout_constraintTop_toBottomOf="@+id/pwdFilledTextField" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_signin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/solid_button_signin"
-        android:fontFamily="@font/pretendard_semibold"
+        android:fontFamily="@font/pretendard_medium"
         android:outlineProvider="none"
         android:text="로그인"
         android:textColor="@color/forkie_white"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwdFilledTextField" />
-
-    <TextView
-        android:id="@+id/tv_find_pwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/pretendard_medium"
-        android:text="비밀번호 찾기"
-        android:textColor="@color/forkie_g3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_find_pwd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

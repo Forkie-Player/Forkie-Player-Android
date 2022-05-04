@@ -47,6 +47,7 @@
         <entry key="app/src/main/res/drawable/solid_button_yes.xml" value="0.312" />
         <entry key="app/src/main/res/font/font_family.xml" value="0.2296875" />
         <entry key="app/src/main/res/font/font_family_en.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_find_password.xml" value="0.18931159420289856" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.67" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_play.xml" value="0.22" />
