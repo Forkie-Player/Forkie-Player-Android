@@ -19,9 +19,15 @@ class IntroActivity : AppCompatActivity() {
         // 다크모드 제한
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        binding.btnSignin.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
+        binding.apply {
+            btnSignin.setOnClickListener {
+                val intent = Intent(this@IntroActivity, SignInActivity::class.java)
+                startActivity(intent)
+            }
+            btnSignup.setOnClickListener {
+                val intent = Intent(this@IntroActivity, SignUpEmailActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForkiePlayer">
         <activity
-            android:name=".sign.FindPasswordActivity"
+            android:name=".sign.SignUpEmailActivity"
             android:exported="false" />
         <activity
             android:name=".play.PlayEditActivity"

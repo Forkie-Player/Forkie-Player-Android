@@ -58,4 +58,24 @@
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintEnabled">false</item>
     </style>
+
+    <style name="PwdOutlineTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/forkie_g1</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="android:textColorHint">@color/forkie_g2</item>
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="SignInFilledTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/forkie_g1</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="android:textColorHint">@color/forkie_g2</item>
+        <item name="hintEnabled">false</item>
+    </style>
 </resources>
