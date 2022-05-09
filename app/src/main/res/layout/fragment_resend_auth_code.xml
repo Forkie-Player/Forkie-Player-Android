@@ -33,7 +33,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/pretendard_regular"
         android:text="메일함을 확인해주세요."
-        android:textColor="@color/forkie_g4"
+        android:textColor="@color/forkie_g6"
         android:textSize="15sp" />
 
     <androidx.appcompat.widget.AppCompatButton

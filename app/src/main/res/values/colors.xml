@@ -15,10 +15,12 @@
     <color name="forkie_red">#EE5656</color>
     <color name="forkie_white">#FFFFFF</color>
     <color name="forkie_g1">#F6F6F6</color>
-    <color name="forkie_g2">#D7D7D7</color>
-    <color name="forkie_g3">#AEAEAE</color>
-    <color name="forkie_g4">#757575</color>
-    <color name="forkie_g5">#454545</color>
+    <color name="forkie_g2">#E4E4E4</color>
+    <color name="forkie_g3">#D7D7D7</color>
+    <color name="forkie_g4">#AEAEAE</color>
+    <color name="forkie_g5">#8C8C8C</color>
+    <color name="forkie_g6">#757575</color>
+    <color name="forkie_g7">#454545</color>
 
     <!-- outline box unfocus 상태일 때 색상 지정 -->
     <color name="mtrl_textinput_default_box_stroke_color">@color/forkie_g1</color>

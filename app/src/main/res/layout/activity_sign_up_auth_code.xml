@@ -184,7 +184,7 @@
         android:layout_marginTop="21dp"
         android:fontFamily="@font/pretendard_medium"
         android:text="인증코드가 도착하지 않았나요?"
-        android:textColor="@color/forkie_g3"
+        android:textColor="@color/forkie_g4"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -195,7 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="21dp"
         android:fontFamily="@font/pretendard_medium"
-        android:textColor="@color/forkie_g5"
+        android:textColor="@color/forkie_g7"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_not_send_description" />
@@ -209,7 +209,7 @@
         android:fontFamily="@font/pretendard_medium"
         android:background="@drawable/solid_button_auth_resend"
         android:text="인증코드 재발송"
-        android:textColor="@color/forkie_g4"
+        android:textColor="@color/forkie_g5"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_not_send_description"

@@ -45,12 +45,12 @@
         android:layout_marginTop="10dp"
         app:endIconDrawable="@drawable/ic_search_back"
         app:endIconMode="clear_text"
-        app:endIconTint="@color/forkie_g3"
+        app:endIconTint="@color/forkie_g4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
         app:startIconDrawable="@drawable/ic_search_front"
-        app:startIconTint="@color/forkie_g3">
+        app:startIconTint="@color/forkie_g4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_search"
@@ -60,7 +60,7 @@
             android:singleLine="true"
             android:fontFamily="@font/pretendard_regular"
             android:hint="영상을 검색해보세요."
-            android:textColorHint="@color/forkie_g3"
+            android:textColorHint="@color/forkie_g4"
             android:textSize="16sp"
             android:textCursorDrawable="@drawable/cursor"/>
     </com.google.android.material.textfield.TextInputLayout>

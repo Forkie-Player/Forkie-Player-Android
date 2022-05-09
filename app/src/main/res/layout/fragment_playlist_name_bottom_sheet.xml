@@ -28,7 +28,7 @@
         app:hintEnabled="false"
         app:endIconDrawable="@drawable/ic_search_back"
         app:endIconMode="clear_text"
-        app:endIconTint="@color/forkie_g3">
+        app:endIconTint="@color/forkie_g4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_playlist_title"
@@ -38,7 +38,7 @@
             android:singleLine="true"
             android:fontFamily="@font/pretendard_regular"
             android:hint="제목을 입력해주세요."
-            android:textColorHint="@color/forkie_g2"
+            android:textColorHint="@color/forkie_g3"
             android:textSize="17sp"
             android:textCursorDrawable="@drawable/cursor"/>
     </com.google.android.material.textfield.TextInputLayout>

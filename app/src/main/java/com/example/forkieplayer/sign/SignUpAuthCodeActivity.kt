@@ -70,7 +70,7 @@ class SignUpAuthCodeActivity : AppCompatActivity() {
     }
 
     fun setTimer() {
-        binding.tvTime.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.forkie_g5))
+        binding.tvTime.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.forkie_g7))
 
         object : CountDownTimer(1000 * 300, 1000) {
             override fun onTick(millisUntilFinished: Long) {

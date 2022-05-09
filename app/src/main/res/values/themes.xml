@@ -75,7 +75,7 @@
         <item name="boxBackgroundColor">@color/forkie_g1</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
-        <item name="android:textColorHint">@color/forkie_g2</item>
+        <item name="android:textColorHint">@color/forkie_g3</item>
         <item name="hintEnabled">false</item>
     </style>
 </resources>
