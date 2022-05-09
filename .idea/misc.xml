@@ -38,11 +38,13 @@
         <entry key="app/src/main/res/drawable/ic_toolbar_back_white.xml" value="0.203" />
         <entry key="app/src/main/res/drawable/ic_video_short.xml" value="0.221" />
         <entry key="app/src/main/res/drawable/solid_button_activate.xml" value="0.3285" />
+        <entry key="app/src/main/res/drawable/solid_button_auth_resend.xml" value="0.261" />
         <entry key="app/src/main/res/drawable/solid_button_dialog_selector.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_inactivate.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_no.xml" value="0.312" />
         <entry key="app/src/main/res/drawable/solid_button_signin.xml" value="0.312" />
         <entry key="app/src/main/res/drawable/solid_button_signup.xml" value="0.312" />
+        <entry key="app/src/main/res/drawable/solid_button_signup_frag.xml" value="0.261" />
         <entry key="app/src/main/res/drawable/solid_button_toggle.xml" value="0.3285" />
         <entry key="app/src/main/res/drawable/solid_button_yes.xml" value="0.312" />
         <entry key="app/src/main/res/font/font_family.xml" value="0.2296875" />
@@ -56,7 +58,9 @@
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_search_result.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_sign_up_auth_code.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_sign_up_email.xml" value="0.37092391304347827" />
+        <entry key="app/src/main/res/layout/activity_sign_up_pwd.xml" value="0.37092391304347827" />
         <entry key="app/src/main/res/layout/activity_video.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_change_password_bottom_sheet.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/fragment_check_password_bottom_sheet.xml" value="0.19947916666666668" />
@@ -77,8 +81,10 @@
         <entry key="app/src/main/res/layout/fragment_playlist_modify_bottom_sheet.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_playlist_name_bottom_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_profile_menu_bottom_sheet.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_resend_auth_code.xml" value="0.37092391304347827" />
         <entry key="app/src/main/res/layout/fragment_search_hit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/fragment_time_over.xml" value="0.37092391304347827" />
         <entry key="app/src/main/res/layout/fragment_video_edit_info_detail.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_video_edit_info_short.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/fragment_video_info_detail.xml" value="0.33" />

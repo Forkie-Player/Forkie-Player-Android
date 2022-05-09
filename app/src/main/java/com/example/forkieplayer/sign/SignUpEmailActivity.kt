@@ -1,5 +1,6 @@
 package com.example.forkieplayer.sign
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -8,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivitySignUpEmailBinding
+import java.util.regex.Pattern
 
 class SignUpEmailActivity : AppCompatActivity() {
 
@@ -30,13 +32,19 @@ class SignUpEmailActivity : AppCompatActivity() {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    // edittext에 내용 입력되면 버튼 활성화
-                    val message = etId.text.toString()
-                    btnNext.isEnabled = message.isNotEmpty()
+                    val etId = etId.text
+                    if (etId != null) {
+                        btnNext.isEnabled = checkEmailRule()
+                    }
                 }
 
                 override fun afterTextChanged(s: Editable) {}
             })
+
+            btnNext.setOnClickListener {
+                val intent = Intent(this@SignUpEmailActivity, SignUpAuthCodeActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -55,5 +63,12 @@ class SignUpEmailActivity : AppCompatActivity() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun checkEmailRule(): Boolean {
+        val rule = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        val pattern = Pattern.compile(rule)
+
+        return pattern.matcher(binding.etId.text.toString()).find()
     }
 }
