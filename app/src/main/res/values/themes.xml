@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.ForkiePlayer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/forkie_white</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/forkie_b1</item>
+        <item name="colorPrimary">@color/forkie_b1</item>
+        <item name="colorPrimaryVariant">@color/forkie_g1</item>
+        <item name="colorOnPrimary">@color/forkie_white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/forkie_b1</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondaryVariant">@color/forkie_g1</item>
         <item name="colorOnSecondary">@color/forkie_white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/forkie_white</item>
