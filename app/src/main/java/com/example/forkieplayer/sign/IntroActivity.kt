@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.forkieplayer.databinding.ActivityIntroBinding
-import com.example.forkieplayer.profile.ProfileActivity
+import com.example.forkieplayer.sign.signin.SignInActivity
+import com.example.forkieplayer.sign.signup.SignUpEmailActivity
 
 class IntroActivity : AppCompatActivity() {
 

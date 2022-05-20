@@ -10,19 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ForkiePlayer">
         <activity
-            android:name=".sign.SignUpPwdActivity"
+            android:name=".sign.findpwd.FindPwdActivity"
             android:exported="false" />
         <activity
-            android:name=".sign.SignUpAuthCodeActivity"
+            android:name=".sign.findpwd.FindPwdAuthCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".sign.SignUpEmailActivity"
+            android:name=".sign.findpwd.FindPwdEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sign.signup.SignUpPwdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sign.signup.SignUpAuthCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sign.signup.SignUpEmailActivity"
             android:exported="false" />
         <activity
             android:name=".play.PlayEditActivity"
             android:exported="false" />
         <activity
-            android:name=".sign.SignInActivity"
+            android:name=".sign.signin.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".play.PlayActivity"

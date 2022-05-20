@@ -1,4 +1,4 @@
-package com.example.forkieplayer.sign
+package com.example.forkieplayer.sign.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.DialogFragment
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentTimeOverBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-
 
 class FragmentTimeOver : BottomSheetDialogFragment() {
 

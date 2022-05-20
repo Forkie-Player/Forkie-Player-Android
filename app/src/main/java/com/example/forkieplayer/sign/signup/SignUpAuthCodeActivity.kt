@@ -1,4 +1,4 @@
-package com.example.forkieplayer.sign
+package com.example.forkieplayer.sign.signup
 
 import android.content.Intent
 import android.os.Bundle

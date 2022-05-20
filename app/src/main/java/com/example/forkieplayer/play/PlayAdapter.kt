@@ -2,21 +2,15 @@ package com.example.forkieplayer.play
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.RecyclerPlayItemBinding
-import com.example.forkieplayer.playlist.FragmentPlaylistDeleteDialog
-import com.example.forkieplayer.profile.FragmentWithdrawalDialog
-import com.example.forkieplayer.sign.SignInActivity
 import java.util.*
 
 class PlayAdapter(private val datas: MutableList<PlayData>, private val recyclerOnClick: IPlay, private val fragmentManager: FragmentManager): RecyclerView.Adapter<PlayAdapter.PlayViewHolder>() {

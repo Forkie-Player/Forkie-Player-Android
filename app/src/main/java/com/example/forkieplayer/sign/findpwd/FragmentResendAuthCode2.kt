@@ -1,4 +1,4 @@
-package com.example.forkieplayer.sign
+package com.example.forkieplayer.sign.findpwd
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.forkieplayer.R
-import com.example.forkieplayer.databinding.FragmentResendAuthCodeBinding
+import com.example.forkieplayer.databinding.FragmentResendAuthCode2Binding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class FragmentResendAuthCode : BottomSheetDialogFragment() {
+class FragmentResendAuthCode2 : BottomSheetDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = FragmentResendAuthCodeBinding.inflate(inflater, container, false)
+        val binding = FragmentResendAuthCode2Binding.inflate(inflater, container, false)
 
         // TODO : 서버 연동 후 인증번호 재발송
         binding.btnOk.setOnClickListener {
-            (activity as SignUpAuthCodeActivity?)!!.setTimer()
+            (activity as FindPwdAuthCodeActivity?)!!.setTimer()
             dismiss()
         }
 
@@ -30,9 +30,9 @@ class FragmentResendAuthCode : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val TAG = "FragmentResendAuthCode"
-        fun newInstance(): FragmentResendAuthCode {
-            return FragmentResendAuthCode()
+        const val TAG = "FragmentResendAuthCode2"
+        fun newInstance(): FragmentResendAuthCode2 {
+            return FragmentResendAuthCode2()
         }
     }
 }
