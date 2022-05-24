@@ -1,12 +1,12 @@
 package com.example.forkieplayer.sign.signup
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivitySignUpEmailBinding
 import java.util.regex.Pattern
@@ -42,7 +42,9 @@ class SignUpEmailActivity : AppCompatActivity() {
             })
 
             btnNext.setOnClickListener {
+                val loginId = etId.text.toString()
                 val intent = Intent(this@SignUpEmailActivity, SignUpAuthCodeActivity::class.java)
+                intent.putExtra("loginId", loginId)
                 startActivity(intent)
             }
         }

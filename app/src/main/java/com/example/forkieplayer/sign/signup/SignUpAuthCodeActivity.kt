@@ -18,11 +18,14 @@ class SignUpAuthCodeActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySignUpAuthCodeBinding
     lateinit var fragmentManager: FragmentManager
+    lateinit var timer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpAuthCodeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val loginId = intent.getStringExtra("loginId")
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -39,6 +42,7 @@ class SignUpAuthCodeActivity : AppCompatActivity() {
 
             // TODO : 서버 연동 후 인증번호 재발송
             btnResend.setOnClickListener {
+                timer.cancel()
                 FragmentResendAuthCode.newInstance().show(
                     fragmentManager, FragmentResendAuthCode.TAG
                 )
@@ -46,7 +50,9 @@ class SignUpAuthCodeActivity : AppCompatActivity() {
 
             btnNext.setOnClickListener {
                 // TODO : 인증 번호 맞는지 확인
+                timer.cancel()
                 val intent = Intent(this@SignUpAuthCodeActivity, SignUpPwdActivity::class.java)
+                intent.putExtra("loginId", loginId)
                 startActivity(intent)
             }
         }
@@ -72,7 +78,7 @@ class SignUpAuthCodeActivity : AppCompatActivity() {
     fun setTimer() {
         binding.tvTime.setTextColor(ContextCompat.getColor(applicationContext!!, R.color.forkie_g7))
 
-        object : CountDownTimer(1000 * 300, 1000) {
+        timer = object : CountDownTimer(1000 * 300, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val min = (millisUntilFinished / 1000) / 60
                 val second = (millisUntilFinished / 1000) % 60

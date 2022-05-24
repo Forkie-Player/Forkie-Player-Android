@@ -2,20 +2,26 @@ package com.example.forkieplayer.sign.signup
 
 import android.content.Intent
 import android.graphics.Paint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivitySignUpPwdBinding
+import com.example.forkieplayer.httpbody.SignUpRequest
 import com.example.forkieplayer.playlist.MainActivity
+import com.example.forkieplayer.sharedpreference.ForkieApplication
 import java.util.regex.Pattern
+
 
 class SignUpPwdActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySignUpPwdBinding
+    lateinit var signUpViewModel: SignUpViewModel
     lateinit var pwd: String
     lateinit var pwdChk: String
 
@@ -24,10 +30,15 @@ class SignUpPwdActivity : AppCompatActivity() {
         binding = ActivitySignUpPwdBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val loginId: String = intent.getStringExtra("loginId").toString()
+
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
+
+        signUpViewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        subscribeViewModel()
 
         binding.apply {
             tvTerms1.paintFlags = Paint.UNDERLINE_TEXT_FLAG
@@ -75,8 +86,8 @@ class SignUpPwdActivity : AppCompatActivity() {
                         outlinedTextField1.error = null
                         outlinedTextField2.error = null
                         btnStart.isEnabled = true
-                        val intent = Intent(this@SignUpPwdActivity, MainActivity::class.java)
-                        startActivity(intent)
+                        val signInfo = getSignUpInfo(loginId)
+                        callSignUpAPI(signInfo)
                     } else {
                         outlinedTextField1.error = " "
                         outlinedTextField2.error = "알파벳, 숫자, 특수문자가 들어가야해요."
@@ -85,6 +96,30 @@ class SignUpPwdActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun subscribeViewModel() {
+        signUpViewModel.signupOkCode.observe(this) {
+            if (it) {
+                ForkieApplication.prefs.accessToken = signUpViewModel.accessToken
+                ForkieApplication.prefs.refreshToken = signUpViewModel.refreshToken
+                val intent = Intent(this@SignUpPwdActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            } else {
+                CustomToast.makeText(this, "죄송합니다. 회원 가입 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
+            }
+        }
+    }
+
+    private fun callSignUpAPI(signUpInfo: SignUpRequest) = signUpViewModel.requestSignup(signUpInfo)
+
+    private fun getSignUpInfo(loginId: String): SignUpRequest {
+        return SignUpRequest(
+            loginId = loginId,
+            password = binding.etPwdChk.text.toString(),
+            isPC = false
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
