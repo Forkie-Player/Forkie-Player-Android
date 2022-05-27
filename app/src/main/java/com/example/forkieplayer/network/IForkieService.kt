@@ -7,4 +7,7 @@ import retrofit2.http.*
 interface IForkieService {
     @POST("user/auth/signup/member")
     fun requestSignUp(@Body signUpInfo: SignUpRequest): Call<SignUpResponse>
+
+    @POST("user/auth/login/member")
+    fun requestSignIn(@Body signInInfo: SignInRequest): Call<SignInResponse>
 }
