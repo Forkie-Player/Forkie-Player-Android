@@ -19,7 +19,7 @@ class SignInViewModel: ViewModel() {
     fun requestSignIn(signInInfo: SignInRequest, mCallback: SignInActivity) {
         ForkieAPI.requestSignIn(signInInfo).enqueue(object : Callback<SignInResponse> {
             override fun onResponse(call: Call<SignInResponse>, response: Response<SignInResponse>) {
-                accessToken = response.body()?.token?.accessToken ?: NoToken.NO_TOKEN.name
+                accessToken = "Bearer ${response.body()?.token?.accessToken ?: NoToken.NO_TOKEN.name}"
                 refreshToken = response.body()?.token?.refreshToken ?: NoToken.NO_TOKEN.name
 
                 if (response.isSuccessful) {

@@ -10,4 +10,7 @@ interface IForkieService {
 
     @POST("user/auth/login/member")
     fun requestSignIn(@Body signInInfo: SignInRequest): Call<SignInResponse>
+
+    @GET("playlist")
+    fun requestUserPlaylistInfo(): Call<GetPlaylistResponse>
 }

@@ -12,4 +12,8 @@ object ForkieAPI {
     fun requestSignIn(@Body signInInfo: SignInRequest): Call<SignInResponse> {
         return ForkieService.service.requestSignIn(signInInfo)
     }
+
+    fun requestUserPlaylistInfo(): Call<GetPlaylistResponse> {
+        return ForkieService.service.requestUserPlaylistInfo()
+    }
 }

@@ -6,13 +6,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.RecyclerPlaylistItemBinding
 import com.example.forkieplayer.play.PlayActivity
 import com.example.forkieplayer.video.VideoActivity
 
 class PlaylistViewHolder(val binding: RecyclerPlaylistItemBinding): RecyclerView.ViewHolder(binding.root)
 
-class PlaylistAdapter(val datas: List<PlaylistData>, val fragmentManager: FragmentManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PlaylistAdapter(val datas: ArrayList<PlaylistData>, val fragmentManager: FragmentManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var context: Context
 
@@ -30,9 +32,13 @@ class PlaylistAdapter(val datas: List<PlaylistData>, val fragmentManager: Fragme
     // onCreateViewHolder에서 리턴된 ViewHolder 객체의 뷰 항목 데이터를 출력하거나 이벤트를 걸기 위해 호출
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as PlaylistViewHolder).binding
-        binding.ivImage.setImageResource(datas.get(position).image)
-        binding.tvTitle.text = datas.get(position).title
-        binding.tvCount.text = datas.get(position).count.toString()
+        Glide.with(context)
+            .load(datas[position].image)
+            .error(R.drawable.play_temp)
+            .into(binding.ivImage)
+
+        binding.tvTitle.text = datas[position].title
+        binding.tvCount.text = datas[position].count.toString()
 
         // 리사이클러뷰 아이템 롱클릭시 플레이리스트 편집 fragment 뜨게 함
         holder.itemView.setOnLongClickListener {
