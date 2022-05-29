@@ -13,7 +13,7 @@ object ForkieService {
     private val interceptor = Interceptor { chain ->
         val accessToken = ForkieApplication.prefs.accessToken
         val newRequest = chain.request().newBuilder()
-            .addHeader("Authorization", accessToken)
+            .addHeader("Authorization", "Bearer $accessToken")
             .build()
         chain.proceed(newRequest)
     }
