@@ -16,13 +16,20 @@ class SignUpViewModel: ViewModel() {
     var accessToken: String = ""
     var refreshToken: String = ""
 
-    fun requestSignup(signUpInfo: SignUpRequest) {
+    fun requestSignup(signUpInfo: SignUpRequest, mCallback: SignUpPwdActivity) {
         ForkieAPI.requestSignUp(signUpInfo).enqueue(object : Callback<SignUpResponse> {
             override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
-                signupOkCode.postValue(true)
-                accessToken = response.body()?.token?.accessToken ?: NoToken.No_Token.name
-                refreshToken = response.body()?.token?.refreshToken ?: NoToken.No_Token.name
-                Log.d("[Forkie API] signUp", "회원가입 요청 성공")
+                accessToken = response.body()?.token?.accessToken ?: NoToken.NO_TOKEN.name
+                refreshToken = response.body()?.token?.refreshToken ?: NoToken.NO_TOKEN.name
+
+                if (response.isSuccessful) {
+                    signupOkCode.postValue(true)
+                    Log.d("[Forkie API] signUp", "회원가입 요청 성공")
+                } else {
+                    signupOkCode.postValue(false)
+                    mCallback.responseError(response.code())
+                    Log.d("[Forkie API] signUp", "회원가입 요청 실패, status code : ${response.code()}")
+                }
             }
 
             override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {

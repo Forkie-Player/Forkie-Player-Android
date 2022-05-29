@@ -98,6 +98,13 @@ class SignUpPwdActivity : AppCompatActivity() {
         }
     }
 
+    fun responseError(code: Int) {
+        when(code) {
+            400 ->
+                CustomToast.makeText(this,"이미 가입한 회원입니다. 로그인해주세요.")?.show()
+        }
+    }
+
     private fun subscribeViewModel() {
         signUpViewModel.signupOkCode.observe(this) {
             if (it) {
@@ -112,7 +119,7 @@ class SignUpPwdActivity : AppCompatActivity() {
         }
     }
 
-    private fun callSignUpAPI(signUpInfo: SignUpRequest) = signUpViewModel.requestSignup(signUpInfo)
+    private fun callSignUpAPI(signUpInfo: SignUpRequest) = signUpViewModel.requestSignup(signUpInfo, this)
 
     private fun getSignUpInfo(loginId: String): SignUpRequest {
         return SignUpRequest(

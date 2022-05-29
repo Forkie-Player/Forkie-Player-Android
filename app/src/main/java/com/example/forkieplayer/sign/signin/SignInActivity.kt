@@ -78,6 +78,14 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    fun responseError(code: Int) {
+        when(code) {
+            //TODO: api 명세 다시 받고 수정
+            500 ->
+                CustomToast.makeText(this, "로그인에 실패했습니다")?.show()
+        }
+    }
+
     private fun subscribeViewModel() {
         signInViewModel.signInOkCode.observe(this) {
             if (it) {
@@ -102,5 +110,5 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun callSignInAPI(signInInfo: SignInRequest) = signInViewModel.requestSignIn(signInInfo)
+    private fun callSignInAPI(signInInfo: SignInRequest) = signInViewModel.requestSignIn(signInInfo, this)
 }
