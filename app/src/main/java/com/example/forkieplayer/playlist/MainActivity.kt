@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityMainBinding
+import com.example.forkieplayer.httpbody.CreatePlaylistRequest
+import com.example.forkieplayer.httpbody.PlaylistInfo
 import com.example.forkieplayer.profile.ProfileActivity
 import com.example.forkieplayer.search.SearchActivity
 
@@ -21,9 +23,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var adapter: PlaylistAdapter
     lateinit var fragmentManager: FragmentManager
-    lateinit var getPlaylistViewModel: GetPlaylistViewModel
+    lateinit var playlistViewModel: PlaylistViewModel
 
-    val datas = arrayListOf<PlaylistData>()
+    val datas = arrayListOf<PlaylistInfo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +35,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        getPlaylistViewModel = ViewModelProvider(this).get(GetPlaylistViewModel::class.java)
-        subscribeViewModel()
-
+        playlistViewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
         callGetPlaylistAPI()
+        subscribeViewModel()
 
         // 리사이클러뷰 설정
         fragmentManager = this.supportFragmentManager
@@ -54,9 +55,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun subscribeViewModel() {
-        getPlaylistViewModel.okCode.observe(this){
+        playlistViewModel.userPlaylistokCode.observe(this){
             if(it) {
-                val playlistData = getPlaylistViewModel.playlistDataList
+                val playlistData = playlistViewModel.playlistDataList
 
                 if (playlistData.isNullOrEmpty()) {
                     binding.apply {
@@ -72,10 +73,10 @@ class MainActivity : AppCompatActivity() {
                     // TODO: 플레이리스트 갯수 받아오기
                     playlistData.forEach { i ->
                         if(i.thumbnail != null) {
-                            datas.add(PlaylistData(i.thumbnail, i.title, 30))
+                            datas.add(i)
                         } else {
                             // TODO: thumbnail null일 때 기본 이미지 설정하기
-                            datas.add(PlaylistData("https://i.ytimg.com/vi/ioNng23DkIM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDbvCoKyPCuxzHAlfdn0ft3gRTJWA", i.title, 30))
+                            datas.add(PlaylistInfo(i.id, "https://i.ytimg.com/vi/ioNng23DkIM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDbvCoKyPCuxzHAlfdn0ft3gRTJWA", i.title))
                         }
                     }
                 }
@@ -83,9 +84,24 @@ class MainActivity : AppCompatActivity() {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 조회 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }
         }
+
+        playlistViewModel.addPlaylistOkCode.observe(this){
+            if(it){
+                // TODO: getplaylistapi에서 새로운 정보 가져와서 뷰에 세팅
+            }else{
+                CustomToast.makeText(this, "죄송합니다. 플레이리스트 추가 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
+            }
+        }
     }
 
-    private fun callGetPlaylistAPI() = getPlaylistViewModel.requestUserPlaylistInfo()
+    private fun callGetPlaylistAPI() = playlistViewModel.requestUserPlaylistInfo()
+
+    private fun callCreatePlaylistAPI(createPlaylistInfo: CreatePlaylistRequest) = playlistViewModel.requestCreatePlaylist(createPlaylistInfo)
+
+    fun addPlaylist(title: String) {
+        val createPlaylistInfo = CreatePlaylistRequest(title = title)
+        callCreatePlaylistAPI(createPlaylistInfo)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_main, menu)

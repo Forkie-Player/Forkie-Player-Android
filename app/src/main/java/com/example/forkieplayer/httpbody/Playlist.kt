@@ -12,10 +12,21 @@ data class PlaylistInfo (
     val id: Int = 0,
     val thumbnail: String = "",
     val title: String = ""
+    //TODO: cnt 추가
 )
 
 // 플레이리스트 생성 관련
+data class CreatePlaylistRequest (
+    val title: String = ""
+)
 
 // 플레이리스트 삭제 관련
+data class DeletePlaylistRequest (
+    val playlistId: Long = 0
+)
 
 // 플레이리스트 제목 수정 관련
+data class ChangePlaylistRequest (
+    val playlistId: Long = 0,
+    val title: String = ""
+)

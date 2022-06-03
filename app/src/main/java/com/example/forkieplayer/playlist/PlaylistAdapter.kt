@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.RecyclerPlaylistItemBinding
+import com.example.forkieplayer.httpbody.PlaylistInfo
 import com.example.forkieplayer.play.PlayActivity
 import com.example.forkieplayer.video.VideoActivity
 
 class PlaylistViewHolder(val binding: RecyclerPlaylistItemBinding): RecyclerView.ViewHolder(binding.root)
 
-class PlaylistAdapter(val datas: ArrayList<PlaylistData>, val fragmentManager: FragmentManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: FragmentManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var context: Context
 
@@ -33,14 +34,15 @@ class PlaylistAdapter(val datas: ArrayList<PlaylistData>, val fragmentManager: F
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as PlaylistViewHolder).binding
         Glide.with(context)
-            .load(datas[position].image)
+            .load(datas[position].thumbnail)
             .error(R.drawable.play_temp)
             .into(binding.ivImage)
 
         binding.tvTitle.text = datas[position].title
-        binding.tvCount.text = datas[position].count.toString()
+        binding.tvCount.text = "12"
 
         // 리사이클러뷰 아이템 롱클릭시 플레이리스트 편집 fragment 뜨게 함
+        // TODO : id 같이 보내기..
         holder.itemView.setOnLongClickListener {
             FragmentPlaylistEditBottomSheet.newInstance().show(
                 fragmentManager, FragmentPlaylistEditBottomSheet.TAG
@@ -48,9 +50,10 @@ class PlaylistAdapter(val datas: ArrayList<PlaylistData>, val fragmentManager: F
             return@setOnLongClickListener(true)
         }
 
-        //TODO: 서버 연동하면 플레이리스트 id 같이 보내야할걸..?
         holder.itemView.setOnClickListener {
+            val id = datas[position].id
             val intent = Intent(context, PlayActivity::class.java)
+            intent.putExtra("id", id)
             context.startActivity(intent)
         }
     }

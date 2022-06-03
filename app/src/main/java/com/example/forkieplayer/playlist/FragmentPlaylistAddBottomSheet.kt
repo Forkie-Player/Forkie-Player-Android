@@ -28,33 +28,36 @@ class FragmentPlaylistAddBottomSheet : BottomSheetDialogFragment() {
         val binding = FragmentPlaylistAddBottomSheetBinding.inflate(inflater, container, false)
 
         // 처음에는 버튼 비활성화
-        binding.btnCreate.isEnabled = false
+        binding.apply {
+            btnCreate.isEnabled = false
 
-        binding.etPlaylistTitle.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            etPlaylistTitle.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                // edittext에 내용 입력되면 버튼 활성화
-                val message = binding.etPlaylistTitle.text.toString()
-                binding.btnCreate.isEnabled = message.isNotEmpty()
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    // edittext에 내용 입력되면 버튼 활성화
+                    val message = binding.etPlaylistTitle.text.toString()
+                    binding.btnCreate.isEnabled = message.isNotEmpty()
 
-                // 제목 12자 이상 쓰여지면 토스트 메시지
-                if (message.length == 12) {
-                    CustomToast.makeText(mainActivity, "제목은 12자 이하로 입력해주세요.")?.show()
+                    // 제목 12자 이상 쓰여지면 토스트 메시지
+                    if (message.length == 12) {
+                        CustomToast.makeText(mainActivity, "제목은 12자 이하로 입력해주세요.")?.show()
+                    }
                 }
+
+                override fun afterTextChanged(s: Editable) {
+                }
+            })
+
+            // 제목 12자 이상 쓰여지지 않도록 설정
+            etPlaylistTitle.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(12))
+
+            // 입력 내용 서버에 보내기
+            btnCreate.setOnClickListener {
+                (activity as MainActivity).addPlaylist(etPlaylistTitle.text.toString())
+                CustomToast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is created!")?.show()
+                dismiss()
             }
-
-            override fun afterTextChanged(s: Editable) {}
-        })
-
-        // 제목 12자 이상 쓰여지지 않도록 설정
-        binding.etPlaylistTitle.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(12))
-
-        // 입력 내용 서버에 보내기
-        binding.btnCreate.setOnClickListener {
-            //TODO:서버에 플레이스트 정보 보내기
-            CustomToast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is created!")?.show()
-            dismiss()
         }
 
         return binding.root
