@@ -16,4 +16,8 @@ interface IForkieService {
 
     @POST("playlist")
     fun requestCreatePlaylist(@Body playlistInfo: CreatePlaylistRequest): Call<CreatePlaylistResponse>
+
+    // DELETE 메소드는 BODY를 지원하지 않아 HTTP 어노테이션으로 따로 처리해야 함
+    @HTTP(method = "DELETE", path = "playlist", hasBody = true)
+    fun requestDeletePlaylist(@Body playlistId: DeletePlaylistRequest): Call<Any>
 }

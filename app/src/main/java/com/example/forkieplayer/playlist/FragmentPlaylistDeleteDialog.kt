@@ -12,9 +12,11 @@ import androidx.fragment.app.DialogFragment
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.databinding.FragmentPlaylistDeleteDialogBinding
 
-class FragmentPlaylistDeleteDialog : DialogFragment() {
+class FragmentPlaylistDeleteDialog(id: Long, position: Int) : DialogFragment() {
 
     lateinit var mainActivity: MainActivity
+    val id = id
+    val position = position
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,7 +34,7 @@ class FragmentPlaylistDeleteDialog : DialogFragment() {
         }
 
         binding.btnDelete.setOnClickListener {
-            //TODO:서버에 삭제 정보 보내기
+            (activity as MainActivity).deletePlaylist(id, position)
             CustomToast.makeText(mainActivity, "삭제되었습니다.")?.show()
             dismiss()
         }
@@ -42,8 +44,8 @@ class FragmentPlaylistDeleteDialog : DialogFragment() {
 
     companion object {
         const val TAG = "FragmentPlaylistDeleteDialog"
-        fun newInstance(): FragmentPlaylistDeleteDialog{
-            return FragmentPlaylistDeleteDialog()
+        fun newInstance(id: Long, position: Int): FragmentPlaylistDeleteDialog{
+            return FragmentPlaylistDeleteDialog(id, position)
         }
     }
 }

@@ -42,9 +42,8 @@ class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: F
         binding.tvCount.text = "12"
 
         // 리사이클러뷰 아이템 롱클릭시 플레이리스트 편집 fragment 뜨게 함
-        // TODO : id 같이 보내기..
         holder.itemView.setOnLongClickListener {
-            FragmentPlaylistEditBottomSheet.newInstance().show(
+            FragmentPlaylistEditBottomSheet.newInstance(datas[position].id, position).show(
                 fragmentManager, FragmentPlaylistEditBottomSheet.TAG
             )
             return@setOnLongClickListener(true)
@@ -60,7 +59,11 @@ class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: F
 
     fun addData(newData : PlaylistInfo){
         datas.add(newData)
-        // 새로고침
         notifyItemInserted(itemCount)
+    }
+
+    fun deleteData(position: Int) {
+        datas.removeAt(position)
+        notifyItemRemoved(position)
     }
 }

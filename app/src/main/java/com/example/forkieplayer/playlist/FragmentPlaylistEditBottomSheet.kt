@@ -10,9 +10,11 @@ import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentPlaylistEditBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class FragmentPlaylistEditBottomSheet : BottomSheetDialogFragment() {
+class FragmentPlaylistEditBottomSheet(id: Long, position: Int) : BottomSheetDialogFragment() {
 
     lateinit var mainActivity: MainActivity
+    val id = id
+    val position = position
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,7 +34,7 @@ class FragmentPlaylistEditBottomSheet : BottomSheetDialogFragment() {
 
         // delete 클릭시 플레이리스트 삭제하는 fragment 뜨게 함
         binding.layoutDelete.setOnClickListener {
-            FragmentPlaylistDeleteDialog.newInstance().show(
+            FragmentPlaylistDeleteDialog.newInstance(id, position).show(
                 parentFragmentManager, FragmentPlaylistDeleteDialog.TAG
             )
             dismiss()
@@ -49,8 +51,8 @@ class FragmentPlaylistEditBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "FragmentPlaylistEditBottomSheet"
-        fun newInstance(): FragmentPlaylistEditBottomSheet{
-            return FragmentPlaylistEditBottomSheet()
+        fun newInstance(id: Long, position: Int): FragmentPlaylistEditBottomSheet{
+            return FragmentPlaylistEditBottomSheet(id, position)
         }
     }
 }

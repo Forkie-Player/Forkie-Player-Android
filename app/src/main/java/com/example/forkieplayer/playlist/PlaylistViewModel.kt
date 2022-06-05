@@ -3,14 +3,12 @@ package com.example.forkieplayer.playlist
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.forkieplayer.httpbody.CreatePlaylistRequest
-import com.example.forkieplayer.httpbody.CreatePlaylistResponse
-import com.example.forkieplayer.httpbody.GetPlaylistResponse
-import com.example.forkieplayer.httpbody.PlaylistInfo
+import com.example.forkieplayer.httpbody.*
 import com.example.forkieplayer.network.ForkieAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Body
 
 class PlaylistViewModel: ViewModel() {
     val userPlaylistokCode: MutableLiveData<Boolean> = MutableLiveData()
@@ -63,6 +61,24 @@ class PlaylistViewModel: ViewModel() {
             override fun onFailure(call: Call<CreatePlaylistResponse>, t: Throwable) {
                 addPlaylistOkCode.postValue(false)
                 Log.d("[Forkie API] createPlaylist", "플레이리스트 생성 요청 실패 Throwable -> ${t.message}")
+            }
+        })
+    }
+
+    // 플레이리스트 삭제
+    val deletePlaylistOkCode: MutableLiveData<Boolean> = MutableLiveData()
+    fun requestDeletePlaylist(playlistId: DeletePlaylistRequest) {
+        ForkieAPI.requestDeletePlaylist(playlistId).enqueue(object : Callback<Any> {
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                if (response.isSuccessful) {
+                    deletePlaylistOkCode.postValue(true)
+                    Log.d("[Forkie API] deletePlaylist", "플레이리스트 삭제 요청 성공")
+                }
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                deletePlaylistOkCode.postValue(false)
+                Log.d("[Forkie API] deletePlaylist", "플레이리스트 삭제 요청 성공")
             }
         })
     }

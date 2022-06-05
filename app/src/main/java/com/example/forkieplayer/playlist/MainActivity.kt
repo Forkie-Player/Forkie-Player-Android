@@ -2,6 +2,7 @@ package com.example.forkieplayer.playlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityMainBinding
 import com.example.forkieplayer.httpbody.CreatePlaylistRequest
+import com.example.forkieplayer.httpbody.DeletePlaylistRequest
 import com.example.forkieplayer.httpbody.PlaylistInfo
 import com.example.forkieplayer.profile.ProfileActivity
 import com.example.forkieplayer.search.SearchActivity
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var playlistViewModel: PlaylistViewModel
 
     val datas = arrayListOf<PlaylistInfo>()
+    var position = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         playlistViewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
         callGetPlaylistAPI()
+
         subscribeGetViewModel()
         subscribeAddViewModel()
+        subscribeDeleteViewModel()
 
         // 리사이클러뷰 설정
         fragmentManager = this.supportFragmentManager
@@ -98,13 +103,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun subscribeDeleteViewModel() {
+        playlistViewModel.deletePlaylistOkCode.observe(this){
+            if(it){
+                adapter.deleteData(position)
+            } else {
+                CustomToast.makeText(this, "죄송합니다. 플레이리스트 삭제 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
+            }
+        }
+    }
+
     private fun callGetPlaylistAPI() = playlistViewModel.requestUserPlaylistInfo()
 
     private fun callCreatePlaylistAPI(createPlaylistInfo: CreatePlaylistRequest) = playlistViewModel.requestCreatePlaylist(createPlaylistInfo)
 
+    private fun callDeletePlaylistAPI(deletePlaylistInfo: DeletePlaylistRequest) = playlistViewModel.requestDeletePlaylist(deletePlaylistInfo)
+
     fun addPlaylist(title: String) {
         val createPlaylistInfo = CreatePlaylistRequest(title = title)
         callCreatePlaylistAPI(createPlaylistInfo)
+    }
+
+    fun deletePlaylist(id: Long, position: Int) {
+        val deletePlaylistInfo = DeletePlaylistRequest(playlistId = id)
+        callDeletePlaylistAPI(deletePlaylistInfo)
+        this.position = position
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
