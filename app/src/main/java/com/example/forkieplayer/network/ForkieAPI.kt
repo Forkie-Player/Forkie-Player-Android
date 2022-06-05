@@ -24,4 +24,8 @@ object ForkieAPI {
     fun requestDeletePlaylist(@Body playlistId: DeletePlaylistRequest): Call<Any> {
         return ForkieService.service.requestDeletePlaylist(playlistId)
     }
+
+    fun requestChangePlaylist(@Body changePlaylistInfo: ChangePlaylistRequest): Call<Any> {
+        return ForkieService.service.requestChangePlaylist(changePlaylistInfo)
+    }
 }

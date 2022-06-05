@@ -55,7 +55,6 @@ class FragmentPlaylistAddBottomSheet : BottomSheetDialogFragment() {
             // 입력 내용 서버에 보내기
             btnCreate.setOnClickListener {
                 (activity as MainActivity).addPlaylist(etPlaylistTitle.text.toString())
-                CustomToast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is created!")?.show()
                 dismiss()
             }
         }

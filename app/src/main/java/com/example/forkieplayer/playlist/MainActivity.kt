@@ -2,7 +2,6 @@ package com.example.forkieplayer.playlist
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityMainBinding
+import com.example.forkieplayer.httpbody.ChangePlaylistRequest
 import com.example.forkieplayer.httpbody.CreatePlaylistRequest
 import com.example.forkieplayer.httpbody.DeletePlaylistRequest
 import com.example.forkieplayer.httpbody.PlaylistInfo
@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var playlistViewModel: PlaylistViewModel
 
     val datas = arrayListOf<PlaylistInfo>()
-    var position = -1
+    var deletePosition = -1
+    var changePosition = -1
+    var changeTitle = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         subscribeGetViewModel()
         subscribeAddViewModel()
         subscribeDeleteViewModel()
+        subscribeChangeViewModel()
 
         // 리사이클러뷰 설정
         fragmentManager = this.supportFragmentManager
@@ -106,9 +109,19 @@ class MainActivity : AppCompatActivity() {
     private fun subscribeDeleteViewModel() {
         playlistViewModel.deletePlaylistOkCode.observe(this){
             if(it){
-                adapter.deleteData(position)
+                adapter.deleteData(deletePosition)
             } else {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 삭제 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
+            }
+        }
+    }
+
+    private fun subscribeChangeViewModel() {
+        playlistViewModel.changePlaylistOkCode.observe(this){
+            if(it){
+                adapter.changeData(changePosition, changeTitle)
+            } else {
+                CustomToast.makeText(this, "죄송합니다. 플레이리스트 제목 변경 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }
         }
     }
@@ -119,6 +132,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun callDeletePlaylistAPI(deletePlaylistInfo: DeletePlaylistRequest) = playlistViewModel.requestDeletePlaylist(deletePlaylistInfo)
 
+    private fun callChangePlaylistAPI(changePlaylistInfo: ChangePlaylistRequest) = playlistViewModel.requestChangePlaylist(changePlaylistInfo)
+
     fun addPlaylist(title: String) {
         val createPlaylistInfo = CreatePlaylistRequest(title = title)
         callCreatePlaylistAPI(createPlaylistInfo)
@@ -127,7 +142,14 @@ class MainActivity : AppCompatActivity() {
     fun deletePlaylist(id: Long, position: Int) {
         val deletePlaylistInfo = DeletePlaylistRequest(playlistId = id)
         callDeletePlaylistAPI(deletePlaylistInfo)
-        this.position = position
+        deletePosition = position
+    }
+
+    fun changePlaylist(id: Long, position: Int, newTitle: String) {
+        val changePlaylistInfo = ChangePlaylistRequest(playlistId = id, title = newTitle)
+        callChangePlaylistAPI(changePlaylistInfo)
+        changePosition = position
+        changeTitle = newTitle
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

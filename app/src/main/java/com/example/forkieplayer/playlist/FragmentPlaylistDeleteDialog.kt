@@ -35,7 +35,6 @@ class FragmentPlaylistDeleteDialog(id: Long, position: Int) : DialogFragment() {
 
         binding.btnDelete.setOnClickListener {
             (activity as MainActivity).deletePlaylist(id, position)
-            CustomToast.makeText(mainActivity, "삭제되었습니다.")?.show()
             dismiss()
         }
 

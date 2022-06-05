@@ -15,9 +15,11 @@ import com.example.forkieplayer.databinding.FragmentPlaylistNameBottomSheetBindi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
+class FragmentPlaylistNameBottomSheet(id: Long, position:Int) : BottomSheetDialogFragment() {
 
     lateinit var mainActivity: MainActivity
+    val id = id
+    val position = position
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -52,8 +54,8 @@ class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
 
         // 입력 내용 서버에 보내기
         binding.btnCreate.setOnClickListener {
-            //TODO:서버에 플레이스트 정보 보내기
-            CustomToast.makeText(mainActivity, "${binding.etPlaylistTitle.text.toString()} is changed!")?.show()
+            val newTitle = binding.etPlaylistTitle.text.toString()
+            (activity as MainActivity).changePlaylist(id, position, newTitle)
             dismiss()
         }
 
@@ -68,8 +70,8 @@ class FragmentPlaylistNameBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "FragmentPlaylistNameBottomSheet"
-        fun newInstance(): FragmentPlaylistNameBottomSheet{
-            return FragmentPlaylistNameBottomSheet()
+        fun newInstance(id: Long, position: Int): FragmentPlaylistNameBottomSheet{
+            return FragmentPlaylistNameBottomSheet(id, position)
         }
     }
 }

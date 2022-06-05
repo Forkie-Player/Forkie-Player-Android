@@ -66,4 +66,10 @@ class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: F
         datas.removeAt(position)
         notifyItemRemoved(position)
     }
+
+    fun changeData(changePosition: Int, changeTitle: String) {
+        val newData = PlaylistInfo(datas[changePosition].id, datas[changePosition].thumbnail, changeTitle)
+        datas[changePosition] = newData
+        notifyItemChanged(changePosition)
+    }
 }

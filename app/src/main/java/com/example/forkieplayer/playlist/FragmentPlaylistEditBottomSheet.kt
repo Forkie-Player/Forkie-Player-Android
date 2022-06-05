@@ -26,7 +26,7 @@ class FragmentPlaylistEditBottomSheet(id: Long, position: Int) : BottomSheetDial
 
         // change 클릭시 제목 변경하는 fragment 뜨게 함
         binding.layoutChange.setOnClickListener {
-            FragmentPlaylistNameBottomSheet.newInstance().show(
+            FragmentPlaylistNameBottomSheet.newInstance(id, position).show(
                 parentFragmentManager, FragmentPlaylistNameBottomSheet.TAG
             )
             dismiss()

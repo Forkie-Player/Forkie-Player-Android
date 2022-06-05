@@ -67,8 +67,8 @@ class PlaylistViewModel: ViewModel() {
 
     // 플레이리스트 삭제
     val deletePlaylistOkCode: MutableLiveData<Boolean> = MutableLiveData()
-    fun requestDeletePlaylist(playlistId: DeletePlaylistRequest) {
-        ForkieAPI.requestDeletePlaylist(playlistId).enqueue(object : Callback<Any> {
+    fun requestDeletePlaylist(playlistInfo: DeletePlaylistRequest) {
+        ForkieAPI.requestDeletePlaylist(playlistInfo).enqueue(object : Callback<Any> {
             override fun onResponse(call: Call<Any>, response: Response<Any>) {
                 if (response.isSuccessful) {
                     deletePlaylistOkCode.postValue(true)
@@ -80,6 +80,25 @@ class PlaylistViewModel: ViewModel() {
                 deletePlaylistOkCode.postValue(false)
                 Log.d("[Forkie API] deletePlaylist", "플레이리스트 삭제 요청 성공")
             }
+        })
+    }
+
+    // 플레이리스트 수정
+    val changePlaylistOkCode: MutableLiveData<Boolean> = MutableLiveData()
+    fun requestChangePlaylist(playlistInfo: ChangePlaylistRequest) {
+        ForkieAPI.requestChangePlaylist(playlistInfo).enqueue(object : Callback<Any> {
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                if (response.isSuccessful) {
+                    changePlaylistOkCode.postValue(true)
+                    Log.d("[Forkie API] changePlaylist", "플레이리스트 제목 변경 요청 성공")
+                }
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                changePlaylistOkCode.postValue(false)
+                Log.d("[Forkie API] changePlaylist", "플레이리스트 제목 변경 요청 실패")
+            }
+
         })
     }
 }
