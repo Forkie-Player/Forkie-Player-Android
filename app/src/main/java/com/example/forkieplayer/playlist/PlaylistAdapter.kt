@@ -57,4 +57,10 @@ class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: F
             context.startActivity(intent)
         }
     }
+
+    fun addData(newData : PlaylistInfo){
+        datas.add(newData)
+        // 새로고침
+        notifyItemInserted(itemCount)
+    }
 }

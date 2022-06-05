@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         playlistViewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
         callGetPlaylistAPI()
-        subscribeViewModel()
+        subscribeGetViewModel()
+        subscribeAddViewModel()
 
         // 리사이클러뷰 설정
         fragmentManager = this.supportFragmentManager
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun subscribeViewModel() {
+    private fun subscribeGetViewModel() {
         playlistViewModel.userPlaylistokCode.observe(this){
             if(it) {
                 val playlistData = playlistViewModel.playlistDataList
@@ -84,11 +85,14 @@ class MainActivity : AppCompatActivity() {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 조회 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }
         }
+    }
 
+    private fun subscribeAddViewModel() {
         playlistViewModel.addPlaylistOkCode.observe(this){
             if(it){
-                // TODO: getplaylistapi에서 새로운 정보 가져와서 뷰에 세팅
-            }else{
+                // TODO: 새로운 플레이리스트 추가 됐을 때 기본 이미지 설정하기
+                adapter.addData(PlaylistInfo(playlistViewModel.id, "https://i.ytimg.com/vi/ioNng23DkIM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDbvCoKyPCuxzHAlfdn0ft3gRTJWA", playlistViewModel.title))
+            } else {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 추가 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }
         }

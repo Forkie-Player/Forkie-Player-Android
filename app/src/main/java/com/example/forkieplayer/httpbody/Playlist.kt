@@ -9,7 +9,7 @@ data class GetPlaylistResponse (
 )
 
 data class PlaylistInfo (
-    val id: Int = 0,
+    val id: Long = 0,
     val thumbnail: String = "",
     val title: String = ""
     //TODO: cnt 추가
@@ -17,6 +17,16 @@ data class PlaylistInfo (
 
 // 플레이리스트 생성 관련
 data class CreatePlaylistRequest (
+    val title: String = ""
+)
+
+data class CreatePlaylistResponse (
+    @SerializedName("data")
+    val newPlaylist: NewPlaylist
+)
+
+data class NewPlaylist (
+    val id: Long = 0,
     val title: String = ""
 )
 

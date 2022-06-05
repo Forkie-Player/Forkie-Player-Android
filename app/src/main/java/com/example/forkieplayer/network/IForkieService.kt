@@ -15,5 +15,5 @@ interface IForkieService {
     fun requestUserPlaylistInfo(): Call<GetPlaylistResponse>
 
     @POST("playlist")
-    fun requestCreatePlaylist(@Body playlistInfo: CreatePlaylistRequest): Call<Any>
+    fun requestCreatePlaylist(@Body playlistInfo: CreatePlaylistRequest): Call<CreatePlaylistResponse>
 }

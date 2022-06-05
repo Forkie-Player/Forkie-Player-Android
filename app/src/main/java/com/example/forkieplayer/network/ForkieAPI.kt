@@ -17,7 +17,7 @@ object ForkieAPI {
         return ForkieService.service.requestUserPlaylistInfo()
     }
 
-    fun requestCreatePlaylist(@Body playlistInfo: CreatePlaylistRequest): Call<Any> {
+    fun requestCreatePlaylist(@Body playlistInfo: CreatePlaylistRequest): Call<CreatePlaylistResponse> {
         return ForkieService.service.requestCreatePlaylist(playlistInfo)
     }
 }

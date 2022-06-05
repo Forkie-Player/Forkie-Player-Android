@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.forkieplayer.httpbody.CreatePlaylistRequest
+import com.example.forkieplayer.httpbody.CreatePlaylistResponse
 import com.example.forkieplayer.httpbody.GetPlaylistResponse
 import com.example.forkieplayer.httpbody.PlaylistInfo
 import com.example.forkieplayer.network.ForkieAPI
@@ -42,10 +43,15 @@ class PlaylistViewModel: ViewModel() {
 
     // 플레이리스트 추가
     val addPlaylistOkCode: MutableLiveData<Boolean> = MutableLiveData()
+    var id: Long = -1
+    var title: String = ""
 
     fun requestCreatePlaylist(playlistInfo: CreatePlaylistRequest) {
-        ForkieAPI.requestCreatePlaylist(playlistInfo).enqueue(object : Callback<Any> {
-            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+        ForkieAPI.requestCreatePlaylist(playlistInfo).enqueue(object : Callback<CreatePlaylistResponse> {
+            override fun onResponse(call: Call<CreatePlaylistResponse>, response: Response<CreatePlaylistResponse>) {
+                id = response.body()?.newPlaylist?.id ?: -1
+                title = response.body()?.newPlaylist?.title ?: "No Title"
+
                 if (response.isSuccessful) {
                     addPlaylistOkCode.postValue(true)
                     Log.d("[Forkie API] createPlaylist", "플레이리스트 생성 요청 성공")
@@ -54,7 +60,7 @@ class PlaylistViewModel: ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<Any>, t: Throwable) {
+            override fun onFailure(call: Call<CreatePlaylistResponse>, t: Throwable) {
                 addPlaylistOkCode.postValue(false)
                 Log.d("[Forkie API] createPlaylist", "플레이리스트 생성 요청 실패 Throwable -> ${t.message}")
             }
