@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.forkieplayer.httpbody.SignUpRequest
 import com.example.forkieplayer.httpbody.SignUpResponse
-import com.example.forkieplayer.network.ForkieAPI
+import com.example.forkieplayer.network.Forkie.ForkieAPI
 import com.example.forkieplayer.sharedpreference.NoToken
 import retrofit2.Call
 import retrofit2.Callback

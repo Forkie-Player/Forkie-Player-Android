@@ -1,14 +1,16 @@
 package com.example.forkieplayer.search
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivitySearchBinding
+
 
 class SearchActivity : AppCompatActivity() {
 
@@ -34,7 +36,7 @@ class SearchActivity : AppCompatActivity() {
         transaction.add(R.id.fragment_layout, hitFragment)
         transaction.commit()
 
-        // 엔터 눌렀을 때 : x랑 커서 안보이게, 키보드 내려가게, frament_search_result 나오게 설정
+        // 엔터 눌렀을 때 : x랑 커서 안보이게, 키보드 내려가게, 결과 화면 나오게
         binding.etSearch.setOnKeyListener { view, keyCode, keyEvent ->
             if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
                 binding.textInputLayout.isEndIconVisible = false
@@ -42,14 +44,18 @@ class SearchActivity : AppCompatActivity() {
 
                 val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+                
+                val fragment: Fragment? = supportFragmentManager.findFragmentById(R.id.fragment_layout)
+                if (fragment is SearchHitFragment) {
+                    val tran = manager.beginTransaction()
+                    tran.replace(R.id.fragment_layout, resultFragment)
+                    tran.commit()
+                }
 
-                val tran = manager.beginTransaction()
-                tran.replace(R.id.fragment_layout, resultFragment)
-                tran.commit()
+                resultFragment.getSearchText(binding.etSearch.text.toString())
 
                 true
-            }
-            else {
+            } else {
                 false
             }
         }

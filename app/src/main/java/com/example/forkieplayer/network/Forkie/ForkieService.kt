@@ -1,4 +1,4 @@
-package com.example.forkieplayer.network
+package com.example.forkieplayer.network.Forkie
 
 import com.example.forkieplayer.sharedpreference.ForkieApplication
 import okhttp3.Interceptor

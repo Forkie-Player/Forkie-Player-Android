@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentPlaylistAddBottomSheetBinding
+import com.example.forkieplayer.search.SearchViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 

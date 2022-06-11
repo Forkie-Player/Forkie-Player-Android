@@ -1,4 +1,4 @@
-package com.example.forkieplayer.network
+package com.example.forkieplayer.network.Forkie
 
 import com.example.forkieplayer.httpbody.*
 import retrofit2.Call

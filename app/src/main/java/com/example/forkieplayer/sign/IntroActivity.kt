@@ -18,9 +18,6 @@ class IntroActivity : AppCompatActivity() {
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 다크모드 제한
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
         binding.apply {
             ivEmail.setOnClickListener {
                 val intent = Intent(this@IntroActivity, SignInActivity::class.java)

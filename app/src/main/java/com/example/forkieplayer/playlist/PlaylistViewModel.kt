@@ -4,11 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.forkieplayer.httpbody.*
-import com.example.forkieplayer.network.ForkieAPI
+import com.example.forkieplayer.network.Forkie.ForkieAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Body
 
 class PlaylistViewModel: ViewModel() {
     val userPlaylistokCode: MutableLiveData<Boolean> = MutableLiveData()

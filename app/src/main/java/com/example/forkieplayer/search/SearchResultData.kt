@@ -1,8 +1,8 @@
 package com.example.forkieplayer.search
 
 data class SearchResultData (
-    val thumbnailImg: Int,
+    val thumbnailImg: String,
     val title: String,
-    val profileImg: Int,
+    val profileImg: String,
     val name: String
 )
