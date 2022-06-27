@@ -14,7 +14,6 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/pretendard_regular"
-        android:text="[Playlist] 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리 눈 위에 쓰는 이적의 목소리"
         android:textColor="@color/forkie_b1"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +35,7 @@
             android:id="@+id/iv_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/search_profile_sample" />
+            android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -49,7 +47,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/pretendard_medium"
-        android:text="my blue valentine my blue valentine my blue valentine my blue valentine"
         android:textColor="@color/forkie_g6"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"

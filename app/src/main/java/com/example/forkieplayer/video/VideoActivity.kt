@@ -29,18 +29,23 @@ class VideoActivity : AppCompatActivity() {
     val transaction = manager.beginTransaction()
 
     lateinit var myYoutubePlayer: YouTubePlayer
-    val videoId = "nq0IApxv6Cg"
-    val videoLength = 3287.0f
+
+    var videoId = ""
+    var title = ""
+    var thumbnail = ""
+    var channelTitle = ""
+    var channelImg = ""
+    var duration = 0f
 
     val timeFormat = DecimalFormat("00")
-    var maxHour = videoLength.toInt() / 3600
+    var maxHour = 0
     var maxMin = 59
     var maxSec = 59
 
     var bStartTime = 0.0f
-    var bEndTime = videoLength
+    var bEndTime = 0.0f
     var aStartTime = 0.0f
-    var aEndTime = videoLength
+    var aEndTime = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +56,17 @@ class VideoActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
+
+        videoId = intent.getStringExtra("videoId").toString()
+        title = intent.getStringExtra("title").toString()
+        thumbnail = intent.getStringExtra("thumbnail").toString()
+        channelTitle = intent.getStringExtra("channelTitle").toString()
+        channelImg = intent.getStringExtra("channelImg").toString()
+        duration = intent.getFloatExtra("duration", 0.0f)
+
+        maxHour = duration.toInt() / 3600
+        bEndTime = duration
+        aEndTime = duration
 
         // 액티비티 실행시 shortInfo 실행
         transaction.add(R.id.fragment_layout, shortFragment)
@@ -109,26 +125,26 @@ class VideoActivity : AppCompatActivity() {
                 myYoutubePlayer.loadVideo(videoId, 0f)
 
                 changeStart(0.0f)
-                changeEnd(videoLength)
+                changeEnd(duration)
             }
         })
 
         setHourIfZero()
 
         binding.slider.valueFrom = 0.0f
-        binding.slider.valueTo = videoLength
-        binding.slider.values = arrayListOf(0.0f, videoLength)
+        binding.slider.valueTo = duration
+        binding.slider.values = arrayListOf(0.0f, duration)
 
         if (maxHour < 1) {
-            maxMin = videoLength.toInt() / 60
+            maxMin = duration.toInt() / 60
             if (maxMin < 1) {
-                maxSec = videoLength.toInt()
+                maxSec = duration.toInt()
             }
         }
     }
 
     private fun setHourIfZero() {
-        if (getHour(videoLength) == "00") {
+        if (getHour(duration) == "00") {
             binding.tvSlideStartHour.visibility = View.GONE
             binding.tvSliderDivide1.visibility = View.GONE
             binding.tvSlideEndHour.visibility = View.GONE
@@ -235,7 +251,7 @@ class VideoActivity : AppCompatActivity() {
 
     // 입력값 유효한지 판단
     private fun checkValid(time: Float, hour: Float, min: Float, sec: Float) : Boolean {
-        if (time<=videoLength) {
+        if (time<=duration) {
             if (hour<=maxHour && min<=maxMin && sec<=maxSec)
                 return true
         }

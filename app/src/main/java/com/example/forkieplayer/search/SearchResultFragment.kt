@@ -31,9 +31,8 @@ class SearchResultFragment : Fragment() {
         val binding = FragmentSearchResultBinding.inflate(inflater, container, false)
 
         searchViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-
-        callSearchAPI(searchText)
         subscribeSearchViewModel()
+        callSearchAPI(searchText)
 
         binding.recyclerResult.layoutManager = LinearLayoutManager(searchActivity)
         adapter = SearchResultAdapter(datas)
@@ -46,23 +45,14 @@ class SearchResultFragment : Fragment() {
         searchText = search
     }
 
-    private fun callSearchAPI(search: String) = ViewModelProvider(this).get(SearchViewModel::class.java).requestSearch(search)
+    fun callSearchAPI(search: String) = ViewModelProvider(this).get(SearchViewModel::class.java).requestSearch(search)
 
     private fun subscribeSearchViewModel() {
-        searchViewModel.searchokCode.observe(searchActivity){
-            if(it) {
-                val searchResult = searchViewModel.searchResultList ?: arrayListOf()
-
-                if (searchResult.isNullOrEmpty()) {
-                    // TODO: 검색 결과 없는 화면 띄우기
-                } else {
-                    searchResult.forEach { i ->
-                        datas.add((SearchResultData(i.thumbnail, i.title, i.channelImage, i.channelTitle)))
-                    }
-                }
-            } else {
-                CustomToast.makeText(searchActivity, "죄송합니다. 검색 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
+        searchViewModel.searchResultList.observe(searchActivity) {
+            it.forEach { i ->
+                datas.add(SearchResultData(i.videoId, i.title, i.thumbnail, i.channelTitle, i.channelImage, i.duration))
             }
+            adapter.notifyDataSetChanged()
         }
     }
 }

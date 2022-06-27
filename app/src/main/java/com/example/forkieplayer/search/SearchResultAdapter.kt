@@ -32,24 +32,42 @@ class SearchResultAdapter(val resultData: List<SearchResultData>): RecyclerView.
         val binding = (holder as SearchResultViewHolder).binding
 
         Glide.with(context)
-            .load(resultData[position].thumbnailImg)
+            .load(resultData[position].thumbnail)
             .error(R.drawable.no_item)
             .into(binding.ivThumbnail)
 
         binding.tvTitle.text = resultData[position].title
 
         Glide.with(context)
-            .load(resultData[position].profileImg)
+            .load(resultData[position].channelImg)
             .error(R.drawable.no_item)
             .into(binding.ivProfile)
 
-        binding.tvName.text = resultData[position].name
+        binding.tvName.text = resultData[position].channelTitle
 
-        //TODO: 서버 연동 후 아이템 클릭시 아이템 아이디와 함께 넘기기
         holder.itemView.setOnClickListener {
-            // TODO : searchResult에서 필요한 정보 뽑아다가 넘기기
             val intent = Intent(context, VideoActivity::class.java)
+            intent.putExtra("videoId", resultData[position].videoId)
+            intent.putExtra("title", resultData[position].title)
+            intent.putExtra("thumbnail", resultData[position].thumbnail)
+            intent.putExtra("channelTitle", resultData[position].channelTitle)
+            intent.putExtra("channelImg", resultData[position].channelImg)
+            intent.putExtra("duration", fDuration(resultData[position].duration))
             context.startActivity(intent)
         }
+    }
+
+    fun fDuration(duration: String): Float {
+        val colonCnt = duration.count { c -> c == ':'}
+        val times = duration.split(":")
+        var fDuration = 0.0f
+
+        fDuration += if (colonCnt == 1) {
+            ((times[0].toInt() * 60) + times[1].toInt())
+        } else {
+            ((times[0].toInt() * 3600) + (times[1].toInt() * 60) + times[2].toInt())
+        }
+
+        return fDuration
     }
 }
