@@ -40,14 +40,19 @@ class PlaylistViewModel: ViewModel() {
 
     // 플레이리스트 추가
     val addPlaylistOkCode: MutableLiveData<Boolean> = MutableLiveData()
-    var id: Long = -1
-    var title: String = ""
+
+    lateinit var newPlaylist: NewPlaylist
 
     fun requestCreatePlaylist(playlistInfo: CreatePlaylistRequest) {
         ForkieAPI.requestCreatePlaylist(playlistInfo).enqueue(object : Callback<CreatePlaylistResponse> {
             override fun onResponse(call: Call<CreatePlaylistResponse>, response: Response<CreatePlaylistResponse>) {
-                id = response.body()?.newPlaylist?.id ?: -1
-                title = response.body()?.newPlaylist?.title ?: "No Title"
+                newPlaylist = response.body()?.let {
+                    NewPlaylist(
+                        id = it.newPlaylist.id,
+                        thumbnail = "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png",
+                        title = it.newPlaylist.title
+                    )
+                } ?: NewPlaylist()
 
                 if (response.isSuccessful) {
                     addPlaylistOkCode.postValue(true)

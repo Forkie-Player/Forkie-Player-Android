@@ -11,7 +11,6 @@ import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.RecyclerPlaylistItemBinding
 import com.example.forkieplayer.httpbody.PlaylistInfo
 import com.example.forkieplayer.play.PlayActivity
-import com.example.forkieplayer.video.VideoActivity
 
 class PlaylistViewHolder(val binding: RecyclerPlaylistItemBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -59,17 +58,17 @@ class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: F
 
     fun addData(newData : PlaylistInfo){
         datas.add(newData)
-        notifyItemInserted(itemCount)
+        notifyDataSetChanged()
     }
 
     fun deleteData(position: Int) {
         datas.removeAt(position)
-        notifyItemRemoved(position)
+        notifyDataSetChanged()
     }
 
     fun changeData(changePosition: Int, changeTitle: String) {
         val newData = PlaylistInfo(datas[changePosition].id, datas[changePosition].thumbnail, changeTitle)
         datas[changePosition] = newData
-        notifyItemChanged(changePosition)
+        notifyDataSetChanged()
     }
 }

@@ -97,7 +97,8 @@ class MainActivity : AppCompatActivity() {
     private fun subscribeAddViewModel() {
         playlistViewModel.addPlaylistOkCode.observe(this){
             if(it){
-                adapter.addData(PlaylistInfo(playlistViewModel.id, "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png", playlistViewModel.title))
+                val newPlaylist = playlistViewModel.newPlaylist
+                adapter.addData(PlaylistInfo(newPlaylist.id, newPlaylist.thumbnail, newPlaylist.title))
             } else {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 추가 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }

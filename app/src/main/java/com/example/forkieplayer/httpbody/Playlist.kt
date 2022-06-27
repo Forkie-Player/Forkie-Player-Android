@@ -27,6 +27,7 @@ data class CreatePlaylistResponse (
 
 data class NewPlaylist (
     val id: Long = 0,
+    val thumbnail: String = "",
     val title: String = ""
 )
 
