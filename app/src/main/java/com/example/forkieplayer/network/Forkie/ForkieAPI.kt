@@ -28,4 +28,8 @@ object ForkieAPI {
     fun requestChangePlaylist(@Body changePlaylistInfo: ChangePlaylistRequest): Call<Any> {
         return ForkieService.service.requestChangePlaylist(changePlaylistInfo)
     }
+
+    fun requestAddVideo(@Body addVideoInfo: addVideoRequest): Call<Any> {
+        return ForkieService.service.requestAddVideo(addVideoInfo)
+    }
 }

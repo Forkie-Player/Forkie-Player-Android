@@ -84,8 +84,7 @@ class MainActivity : AppCompatActivity() {
                         if(i.thumbnail != null) {
                             datas.add(i)
                         } else {
-                            // TODO: thumbnail null일 때 기본 이미지 설정하기
-                            datas.add(PlaylistInfo(i.id, "https://i.ytimg.com/vi/ioNng23DkIM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDbvCoKyPCuxzHAlfdn0ft3gRTJWA", i.title))
+                            datas.add(PlaylistInfo(i.id, "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png", i.title))
                         }
                     }
                 }
@@ -98,8 +97,7 @@ class MainActivity : AppCompatActivity() {
     private fun subscribeAddViewModel() {
         playlistViewModel.addPlaylistOkCode.observe(this){
             if(it){
-                // TODO: 새로운 플레이리스트 추가 됐을 때 기본 이미지 설정하기
-                adapter.addData(PlaylistInfo(playlistViewModel.id, "https://i.ytimg.com/vi/ioNng23DkIM/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDbvCoKyPCuxzHAlfdn0ft3gRTJWA", playlistViewModel.title))
+                adapter.addData(PlaylistInfo(playlistViewModel.id, "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png", playlistViewModel.title))
             } else {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 추가 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }

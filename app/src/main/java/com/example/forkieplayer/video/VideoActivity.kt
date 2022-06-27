@@ -1,18 +1,18 @@
 package com.example.forkieplayer.video
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityVideoBinding
+import com.example.forkieplayer.httpbody.addVideoRequest
 import com.google.android.material.slider.RangeSlider
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -22,6 +22,7 @@ import java.text.DecimalFormat
 class VideoActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityVideoBinding
+    lateinit var addVideoViewModel: AddVideoViewModel
 
     val shortFragment = VideoInfoShortFragment()
     val detailFragment = VideoInfoDetailFragment()
@@ -83,25 +84,25 @@ class VideoActivity : AppCompatActivity() {
         // EditText 변경했을 때
         timeTextChange()
 
+        addVideoViewModel = ViewModelProvider(this).get(AddVideoViewModel::class.java)
+        subscribeAddVideoViewModel()
+
         // TODO: 추가 버튼 눌렀을 때
         binding.btnAdd.setOnClickListener {
-            CustomToast.makeText(this, "시작 시간 : ${aStartTime}\n끝 시간 : ${aEndTime}")?.show()
+            FragmentSelectPlaylistBottomSheet.newInstance().show(
+                supportFragmentManager, FragmentSelectPlaylistBottomSheet.TAG
+            )
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_search, menu)
-        return true
-    }
+    fun callAddVideoAPI(playlistId: Long) = addVideoViewModel.requestAddVideo(addVideoRequest(playlistId, thumbnail, aStartTime.toLong(), aEndTime.toLong(), videoId, title, channelTitle, channelImg, "YOUTUBE"))
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item?.itemId) {
-            android.R.id.home -> {
-                finish()
-                super.onOptionsItemSelected(item)
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
+    private fun subscribeAddVideoViewModel() {
+        addVideoViewModel.addVideoOkCode.observe(this) {
+            if (it) {
+                CustomToast.makeText(this, "플레이리스트에 추가됐어요.")?.show()
+            } else {
+                CustomToast.makeText(this, "죄송합니다. 영상 추가 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }
         }
     }
@@ -302,5 +303,22 @@ class VideoActivity : AppCompatActivity() {
 
     private fun getPointSec(hour: Float, min: Float, sec: Float): Float {
         return hour * 3600 + min * 60 + sec
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_search, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                super.onOptionsItemSelected(item)
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 }

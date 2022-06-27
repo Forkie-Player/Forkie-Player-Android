@@ -23,4 +23,7 @@ interface IForkieService {
 
     @PATCH("playlist")
     fun requestChangePlaylist(@Body changePlaylistInfo: ChangePlaylistRequest): Call<Any>
+
+    @POST("play")
+    fun requestAddVideo(@Body addVideoInfo: addVideoRequest): Call<Any>
 }

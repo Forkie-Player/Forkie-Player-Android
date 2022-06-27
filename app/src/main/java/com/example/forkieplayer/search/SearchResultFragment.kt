@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.databinding.FragmentSearchResultBinding
-import com.example.forkieplayer.httpbody.SearchInfo
 
 class SearchResultFragment : Fragment() {
 
