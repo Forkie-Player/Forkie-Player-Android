@@ -11,8 +11,8 @@ data class GetPlaylistResponse (
 data class PlaylistInfo (
     val id: Long = 0,
     val thumbnail: String = "",
-    val title: String = ""
-    //TODO: cnt 추가
+    val title: String = "",
+    val playCount: Long = 0
 )
 
 // 플레이리스트 생성 관련
@@ -28,7 +28,8 @@ data class CreatePlaylistResponse (
 data class NewPlaylist (
     val id: Long = 0,
     val thumbnail: String = "",
-    val title: String = ""
+    val title: String = "",
+    val playCount: Long = 0
 )
 
 // 플레이리스트 삭제 관련

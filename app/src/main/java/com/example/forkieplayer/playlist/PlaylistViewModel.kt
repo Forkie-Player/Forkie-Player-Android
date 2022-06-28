@@ -24,7 +24,7 @@ class PlaylistViewModel: ViewModel() {
 
                 if (response.isSuccessful){
                     userPlaylistokCode.value = true
-                    Log.d("[Forkie API] getPlaylist", "플레이리스트 조회 성공")
+                    Log.d("[Forkie API] getPlaylist", "플레이리스트 조회 성공, $playlistDataList")
                 } else{
                     userPlaylistokCode.value = false
                     Log.d("[Forkie API] getPlaylist", "플레이리스트 조회 실패, status code : ${response.code()}")
@@ -50,7 +50,8 @@ class PlaylistViewModel: ViewModel() {
                     NewPlaylist(
                         id = it.newPlaylist.id,
                         thumbnail = "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png",
-                        title = it.newPlaylist.title
+                        title = it.newPlaylist.title,
+                        playCount = it.newPlaylist.playCount
                     )
                 } ?: NewPlaylist()
 

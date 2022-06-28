@@ -33,11 +33,11 @@ class SelectPlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentMana
 
         Glide.with(context)
             .load(datas[position].thumbnail)
-            .error(R.drawable.play_temp)
+            .error("https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png")
             .into(binding.ivImage)
 
         binding.tvTitle.text = datas[position].title
-        binding.tvCount.text = "12"
+        binding.tvCount.text = datas[position].playCount.toString()
 
         holder.itemView.setOnClickListener {
             FragmentAddVideoDialog.newInstance(datas[position].id, datas[position].title).show(

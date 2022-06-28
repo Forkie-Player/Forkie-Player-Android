@@ -34,11 +34,11 @@ class PlaylistAdapter(var datas: ArrayList<PlaylistInfo>, val fragmentManager: F
         val binding = (holder as PlaylistViewHolder).binding
         Glide.with(context)
             .load(datas[position].thumbnail)
-            .error(R.drawable.play_temp)
+            .error("https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png")
             .into(binding.ivImage)
 
         binding.tvTitle.text = datas[position].title
-        binding.tvCount.text = "12"
+        binding.tvCount.text = datas[position].playCount.toString()
 
         // 리사이클러뷰 아이템 롱클릭시 플레이리스트 편집 fragment 뜨게 함
         holder.itemView.setOnLongClickListener {

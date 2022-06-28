@@ -65,12 +65,11 @@ class FragmentSelectPlaylistBottomSheet : BottomSheetDialogFragment() {
 
                 if (playlistData.isNullOrEmpty()) {
                 } else {
-                    // TODO: 플레이리스트 갯수 받아오기
                     playlistData.forEach { i ->
                         if (i.thumbnail != null) {
                             datas.add(i)
                         } else {
-                            datas.add(PlaylistInfo(i.id, "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png", i.title))
+                            datas.add(PlaylistInfo(i.id, "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png", i.title, i.playCount))
                             adapter.notifyDataSetChanged()
                         }
                     }

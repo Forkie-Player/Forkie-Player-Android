@@ -2,6 +2,7 @@ package com.example.forkieplayer.playlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var fragmentManager: FragmentManager
     lateinit var playlistViewModel: PlaylistViewModel
 
-    val datas = arrayListOf<PlaylistInfo>()
+    var datas = arrayListOf<PlaylistInfo>()
     var deletePosition = -1
     var changePosition = -1
     var changeTitle = ""
@@ -52,8 +53,6 @@ class MainActivity : AppCompatActivity() {
         fragmentManager = this.supportFragmentManager
 
         binding.recyclerPlaylist.layoutManager = GridLayoutManager(this, 2)
-        adapter = PlaylistAdapter(datas, fragmentManager)
-        binding.recyclerPlaylist.adapter = adapter
 
         // 하단 추가 버튼 클릭시 플레이리스트 편집 fragment 뜨게 함
         binding.btnBottom.setOnClickListener {
@@ -61,6 +60,12 @@ class MainActivity : AppCompatActivity() {
                 fragmentManager, FragmentPlaylistAddBottomSheet.TAG
             )
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        callGetPlaylistAPI()
+        subscribeGetViewModel()
     }
 
     private fun subscribeGetViewModel() {
@@ -79,14 +84,9 @@ class MainActivity : AppCompatActivity() {
                         groupEmpty.visibility = View.GONE
                     }
 
-                    // TODO: 플레이리스트 갯수 받아오기
-                    playlistData.forEach { i ->
-                        if(i.thumbnail != null) {
-                            datas.add(i)
-                        } else {
-                            datas.add(PlaylistInfo(i.id, "https://velog.velcdn.com/images/alsgk721/post/bb6d186b-5352-4db3-9a92-09d31cc81733/image.png", i.title))
-                        }
-                    }
+                    datas = playlistData
+                    adapter = PlaylistAdapter(datas, fragmentManager)
+                    binding.recyclerPlaylist.adapter = adapter
                 }
             } else {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 조회 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         playlistViewModel.addPlaylistOkCode.observe(this){
             if(it){
                 val newPlaylist = playlistViewModel.newPlaylist
-                adapter.addData(PlaylistInfo(newPlaylist.id, newPlaylist.thumbnail, newPlaylist.title))
+                adapter.addData(PlaylistInfo(newPlaylist.id, newPlaylist.thumbnail, newPlaylist.title, newPlaylist.playCount))
             } else {
                 CustomToast.makeText(this, "죄송합니다. 플레이리스트 추가 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
             }
