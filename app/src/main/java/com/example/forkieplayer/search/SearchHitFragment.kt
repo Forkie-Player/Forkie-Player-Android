@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.FragmentSearchHitBinding
@@ -14,6 +16,9 @@ class SearchHitFragment : Fragment() {
 
     lateinit var searchActivity: SearchActivity
     lateinit var adapter: SearchHitAdapter
+    lateinit var hitViewModel: SearchViewModel
+
+    val datas = mutableListOf<SearchHitData>()
 
     // context 획득
     override fun onAttach(context: Context) {
@@ -24,10 +29,9 @@ class SearchHitFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentSearchHitBinding.inflate(inflater, container, false)
 
-        val datas = mutableListOf<SearchHittData>()
-        for (i in 1..5){
-            datas.add(SearchHittData(R.drawable.search_hit_thumnail_sample, "10CM의 킬링보이스를 라이브로! - 폰서트, 매트리스, pet, 봄이좋냐??, TV를껐네, Perfect, 입김, 스토커, 사랑은은하수다방에서, 아메리카노 ㅣ 딩고뮤직", "딩고 뮤직 / dingo music"))
-        }
+        hitViewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
+        subscribeHitViewModel()
+        callHitAPI()
 
         binding.recyclerHit.layoutManager = LinearLayoutManager(searchActivity)
         adapter = SearchHitAdapter(datas)
@@ -35,4 +39,15 @@ class SearchHitFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun subscribeHitViewModel() {
+        hitViewModel.hitVideoList.observe(searchActivity) {
+            it.forEach { i ->
+                datas.add(SearchHitData(i.videoId, i.title, i.thumbnail, i.channelTitle, i.channelImage, i.duration))
+            }
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun callHitAPI() = ViewModelProvider(this).get(SearchViewModel::class.java).requestHitVideos()
 }

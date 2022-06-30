@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.RecyclerSearchResultItemBinding
-import com.example.forkieplayer.httpbody.SearchInfo
 import com.example.forkieplayer.video.VideoActivity
 
 class SearchResultViewHolder(val binding: RecyclerSearchResultItemBinding): RecyclerView.ViewHolder(binding.root)

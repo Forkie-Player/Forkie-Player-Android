@@ -1,6 +1,6 @@
 package com.example.forkieplayer.httpbody
 
-data class SearchInfo(
+data class VideoInfo(
     val videoId: String = "",
     val title: String = "",
     val thumbnail: String = "",

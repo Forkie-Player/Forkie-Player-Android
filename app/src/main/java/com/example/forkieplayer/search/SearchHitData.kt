@@ -1,7 +1,10 @@
 package com.example.forkieplayer.search
 
-data class SearchHittData (
-    val thumbnailImg: Int,
-    val title: String,
-    val name: String
+data class SearchHitData (
+    val videoId: String = "",
+    val title: String = "",
+    val thumbnail: String = "",
+    val channelTitle: String = "",
+    val channelImg: String = "",
+    val duration: String = ""
 )
