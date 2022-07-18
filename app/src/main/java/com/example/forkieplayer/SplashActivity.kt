@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.forkieplayer.databinding.ActivitySplashBinding
+import com.example.forkieplayer.onboarding.OnboardingActivity
 import com.example.forkieplayer.sign.IntroActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun showUserTypeSelectView() {
-        val intent = Intent(this, IntroActivity::class.java)
+        val intent = Intent(this, OnboardingActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         finish()

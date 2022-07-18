@@ -56,6 +56,7 @@
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_on_boarding.xml" value="0.16983695652173914" />
+        <entry key="app/src/main/res/layout/activity_onboarding.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_play.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_play_edit.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22" />
@@ -78,6 +79,11 @@
         <entry key="app/src/main/res/layout/fragment_edit_video_info_detail.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_edit_video_info_short.xml" value="0.30932971014492755" />
         <entry key="app/src/main/res/layout/fragment_list_bar.xml" value="0.30932971014492755" />
+        <entry key="app/src/main/res/layout/fragment_onboarding_five.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_onboarding_four.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_onboarding_one.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_onboarding_three.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_onboarding_two.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_password_change_bottom_sheet.xml" value="0.33469202898550726" />
         <entry key="app/src/main/res/layout/fragment_play_delete_dialog.xml" value="0.29891304347826086" />
         <entry key="app/src/main/res/layout/fragment_playlist.xml" value="0.25" />
@@ -108,7 +114,8 @@
         <entry key="app/src/main/res/layout/recycler_search_result_item.xml" value="0.3917572463768116" />
         <entry key="app/src/main/res/layout/recycler_video_list_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/toast_custom.xml" value="0.75" />
-        <entry key="app/src/main/res/menu/toolbar_main.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/menu/toolbar_main.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/toolbar_onboarding.xml" value="0.67" />
         <entry key="app/src/main/res/menu/toolbar_play.xml" value="0.2" />
         <entry key="app/src/main/res/menu/toolbar_play_edit.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/menu/toolbar_profile.xml" value="0.4036458333333333" />
