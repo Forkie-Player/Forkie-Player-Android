@@ -1,9 +1,11 @@
 package com.example.forkieplayer.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.forkieplayer.databinding.ActivityOnboardingBinding
+import com.example.forkieplayer.playlist.MainActivity
 
 
 class OnboardingActivity : AppCompatActivity() {
@@ -28,6 +30,12 @@ class OnboardingActivity : AppCompatActivity() {
         binding.apply {
             viewPager.adapter = pageAdapter
             dotsIndicator.setViewPager2(viewPager)
+
+            ivSkip.setOnClickListener {
+                val intent = Intent(this@OnboardingActivity, MainActivity::class.java);
+                startActivity(intent);
+                finish();
+            }
         }
     }
 }

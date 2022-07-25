@@ -13,6 +13,7 @@ import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivitySignUpPwdBinding
 import com.example.forkieplayer.httpbody.SignUpRequest
+import com.example.forkieplayer.onboarding.OnboardingActivity
 import com.example.forkieplayer.playlist.MainActivity
 import com.example.forkieplayer.sharedpreference.ForkieApplication
 import java.util.regex.Pattern
@@ -110,7 +111,7 @@ class SignUpPwdActivity : AppCompatActivity() {
             if (it) {
                 ForkieApplication.prefs.accessToken = signUpViewModel.accessToken
                 ForkieApplication.prefs.refreshToken = signUpViewModel.refreshToken
-                val intent = Intent(this@SignUpPwdActivity, MainActivity::class.java)
+                val intent = Intent(this@SignUpPwdActivity, OnboardingActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             } else {
