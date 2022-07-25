@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".onboarding.FragmentOnboardingFive">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".onboarding.FragmentOnboardingFour">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="five" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_medium"
+            android:text="어떤 플레이리스트를 만들어볼까요?"
+            android:textColor="@color/forkie_b1"
+            android:textSize="17sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/OutlineTextInputLayoutStyle"
+            android:theme="@style/OutlineTextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="22dp"
+            app:hintEnabled="false"
+            app:endIconDrawable="@drawable/ic_search_back"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/forkie_g4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_playlist_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:fontFamily="@font/pretendard_regular"
+                android:hint="제목을 입력해주세요."
+                android:textColorHint="@color/forkie_g3"
+                android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="120dp"
+            android:layout_gravity="start"
+            android:fontFamily="@font/pretendard_medium"
+            android:text="이런 플레이리스트는 어때요?"
+            android:textColor="@color/forkie_g7"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/OnBoardingChipStyle"
+                android:text="🎧  POP"
+                app:chipStartPadding="10dp"
+                app:chipEndPadding="10dp"
+                app:chipBackgroundColor="@color/forkie_g1"
+                app:chipStrokeColor="@color/forkie_g3"
+                app:chipStrokeWidth="1dp"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="@style/OnBoardingChipStyle"
+                android:text="🕹  지리는 게임 매드무비"
+                app:chipStartPadding="10dp"
+                app:chipEndPadding="10dp"
+                app:chipBackgroundColor="@color/forkie_g1"
+                app:chipStrokeColor="@color/forkie_g3"
+                app:chipStrokeWidth="1dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/OnBoardingChipStyle"
+                android:text="🍀  종강을 위한 노동요"
+                app:chipStartPadding="10dp"
+                app:chipEndPadding="10dp"
+                app:chipBackgroundColor="@color/forkie_g1"
+                app:chipStrokeColor="@color/forkie_g3"
+                app:chipStrokeWidth="1dp"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:textAppearance="@style/OnBoardingChipStyle"
+                android:text="🐾  소중한 강아지 모음"
+                app:chipStartPadding="10dp"
+                app:chipEndPadding="10dp"
+                app:chipBackgroundColor="@color/forkie_g1"
+                app:chipStrokeColor="@color/forkie_g3"
+                app:chipStrokeWidth="1dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/OnBoardingChipStyle"
+                android:text="🤞  마음의 평화를 위한 명상음악"
+                app:chipStartPadding="10dp"
+                app:chipEndPadding="10dp"
+                app:chipBackgroundColor="@color/forkie_g1"
+                app:chipStrokeColor="@color/forkie_g3"
+                app:chipStrokeWidth="1dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_start"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/solid_button_toggle"
+            android:fontFamily="@font/pretendard_medium"
+            android:text="시작하기"
+            android:textColor="@color/forkie_white"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_resend" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

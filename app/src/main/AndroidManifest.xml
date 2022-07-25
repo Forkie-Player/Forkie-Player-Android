@@ -23,6 +23,7 @@
         </activity>
         <activity
             android:name=".onboarding.OnboardingActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".sign.findpwd.FindPwdActivity"
