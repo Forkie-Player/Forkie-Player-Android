@@ -4,25 +4,31 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.fragment.app.FragmentManager
+import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.example.forkieplayer.CustomToast
 import com.example.forkieplayer.R
 import com.example.forkieplayer.databinding.ActivityPlayBinding
-import com.example.forkieplayer.profile.FragmentProfileMenuBottomSheet
-import com.example.forkieplayer.video.VideoInfoDetailFragment
-import com.example.forkieplayer.video.VideoInfoShortFragment
+import com.example.forkieplayer.httpbody.PlaylistVideoInfo
+import com.example.forkieplayer.playlist.PlaylistAdapter
+import com.example.forkieplayer.playlist.PlaylistViewModel
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 
 class PlayActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityPlayBinding
+    lateinit var getVideoViewModel: GetVideoViewModel
+    lateinit var myYoutubePlayer: YouTubePlayer
 
-    val editVideoFragment = FragmentEditVideoInfo()
+    val editVideoFragment = FragmentPlayingVideoInfo()
     val playlistFragment = FragmentPlaylist()
     val manager = supportFragmentManager
     val transaction = manager.beginTransaction()
+    val videoData = arrayListOf<PlaylistVideoInfo>()
 
-    lateinit var myYoutubePlayer: YouTubePlayer
+    var playlistId = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,16 +40,50 @@ class PlayActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_toolbar_back)
 
-        lifecycle.addObserver(binding.youtubePlayer)
+        playlistId = intent.getLongExtra("id", -1).toLong()
 
-        binding.youtubePlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                myYoutubePlayer = youTubePlayer
-            }
-        })
+        getVideoViewModel = ViewModelProvider(this).get(GetVideoViewModel::class.java)
+        callGetVideoAPI(playlistId)
+        subscribeGetViewModel()
+
+        lifecycle.addObserver(binding.youtubePlayer)
 
         transaction.add(R.id.fragment_layout, editVideoFragment)
         transaction.commit()
+    }
+
+    private fun callGetVideoAPI(playlistId: Long) = getVideoViewModel.requestVideoInfo(playlistId)
+
+    private fun subscribeGetViewModel() {
+        getVideoViewModel.getVideoOkCode.observe(this){
+            if(it) {
+                val videoData = getVideoViewModel.videoDataList
+
+                if (videoData.isNullOrEmpty()) {
+                    CustomToast.makeText(this, "영상이 존재하지 않습니다")?.show()
+                    finish()
+                } else {
+                    videoData.forEach { i ->
+                        videoData.add(i)
+                    }
+                    setFirstVideo()
+                }
+            } else {
+                CustomToast.makeText(this, "죄송합니다. 플레이리스트 조회 요청에 실패하여 잠시후 다시 시도해주세요.")?.show()
+            }
+        }
+    }
+
+    private fun setFirstVideo() {
+        var firstvideo: PlaylistVideoInfo = videoData[0]
+        binding.apply {
+            youtubePlayer.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    myYoutubePlayer = youTubePlayer
+                    myYoutubePlayer.loadVideo(firstvideo.videoId, 0f)
+                }
+            })
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -77,7 +117,7 @@ class PlayActivity : AppCompatActivity() {
         tran.commit()
     }
 
-    fun changeEditInfo() {
+    fun changeVideoInfo() {
         val tran = manager.beginTransaction()
         tran.replace(R.id.fragment_layout, editVideoFragment)
         tran.commit()

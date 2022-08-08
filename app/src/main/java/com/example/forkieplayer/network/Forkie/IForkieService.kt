@@ -26,4 +26,7 @@ interface IForkieService {
 
     @POST("play")
     fun requestAddVideo(@Body addVideoInfo: addVideoRequest): Call<Any>
+
+    @GET("play")
+    fun requestVideoInfo(@Path("playlistId") playlistId: Long): Call<GetVideoResponse>
 }

@@ -30,7 +30,7 @@ class FragmentPlaylist : Fragment(), IPlay {
 
         // playlist bar 클릭시 비디오 정보 나오게 함
         binding.cvPlaylistBar.setOnClickListener(View.OnClickListener {
-            (activity as PlayActivity).changeEditInfo()
+            (activity as PlayActivity).changeVideoInfo()
         })
 
         // 리사이클러뷰 설정

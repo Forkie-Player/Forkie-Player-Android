@@ -32,4 +32,8 @@ object ForkieAPI {
     fun requestAddVideo(@Body addVideoInfo: addVideoRequest): Call<Any> {
         return ForkieService.service.requestAddVideo(addVideoInfo)
     }
+
+    fun requestVideoInfo(@Path("playlistId") playlistId: Long): Call<GetVideoResponse> {
+        return ForkieService.service.requestVideoInfo(playlistId)
+    }
 }

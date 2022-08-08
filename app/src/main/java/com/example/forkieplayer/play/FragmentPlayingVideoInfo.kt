@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.forkieplayer.databinding.FragmentEditVideoInfoBinding
+import com.example.forkieplayer.databinding.FragmentPlayingVideoInfoBinding
 
-class FragmentEditVideoInfo : Fragment() {
+class FragmentPlayingVideoInfo : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = FragmentEditVideoInfoBinding.inflate(inflater, container, false)
+        val binding = FragmentPlayingVideoInfoBinding.inflate(inflater, container, false)
 
         binding.detailInfo.setOnClickListener {
             binding.groupShort.visibility = View.GONE
