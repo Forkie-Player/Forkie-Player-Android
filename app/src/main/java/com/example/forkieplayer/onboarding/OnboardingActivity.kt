@@ -32,9 +32,9 @@ class OnboardingActivity : AppCompatActivity() {
             dotsIndicator.setViewPager2(viewPager)
 
             ivSkip.setOnClickListener {
-                val intent = Intent(this@OnboardingActivity, MainActivity::class.java);
-                startActivity(intent);
-                finish();
+                val intent = Intent(this@OnboardingActivity, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

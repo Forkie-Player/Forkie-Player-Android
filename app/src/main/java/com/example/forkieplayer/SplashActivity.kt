@@ -7,6 +7,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.forkieplayer.databinding.ActivitySplashBinding
 import com.example.forkieplayer.onboarding.OnboardingActivity
+import com.example.forkieplayer.playlist.MainActivity
 import com.example.forkieplayer.sign.IntroActivity
 import com.example.forkieplayer.sign.signin.SignInActivity
 import javax.security.auth.login.LoginException
@@ -31,7 +32,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun showUserTypeSelectView() {
-        val intent = Intent(this, IntroActivity::class.java)
+        //TODO : 로그인 구현할 때 or 구현 완료되면 인트로로 가게 하기
+//        val intent = Intent(this, IntroActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         finish()

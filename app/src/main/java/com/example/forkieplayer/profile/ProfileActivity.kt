@@ -18,7 +18,6 @@ import java.lang.Exception
 class ProfileActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityProfileBinding
-    lateinit var launcher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,23 +31,15 @@ class ProfileActivity : AppCompatActivity() {
 
         // 프로필 변경 버튼 누르면 갤러리로 감
         binding.btnSelectProfile.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            intent.type = "image/*"
-            launcher.launch(intent)
+            FragmentProfileImageBottomSheet.newInstance().show(
+                this.supportFragmentManager, FragmentProfileImageBottomSheet.TAG
+            )
         }
+    }
 
-        // 갤러리 앱에서 돌아왔을 때 실행됨
-        launcher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) {
-            try {
-                val uri : Uri = it.data!!.data!!
-                Log.d("minha - Forkie", it.data!!.data!!.toString())
-                Glide.with(this).load(uri)
-                    .into(binding.ivProfile)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+    fun changeImage(uri: Uri) {
+        Glide.with(this).load(uri)
+            .into(binding.ivProfile)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
